@@ -1,0 +1,26 @@
+{
+  "name": "continuity-engine",
+  "version": "0.0.0",
+  "description": "Persistent campaign-state layer for FoundryVTT: threads, clocks, factions, knowledge, and personal-quest debt tracked across sessions.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haskett81/continuity-engine.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haskett81/continuity-engine/issues"
+  },
+  "homepage": "https://github.com/haskett81/continuity-engine#readme",
+  "devDependencies": {
+    "@league-of-foundry-developers/foundry-vtt-types": "13.346.0-beta.20250812191140",
+    "typescript": "^5.9.3",
+    "vite": "^8.1.5"
+  }
+}

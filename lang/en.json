@@ -1,0 +1,21 @@
+{
+  "TYPES": {
+    "JournalEntryPage": {
+      "continuity-engine.thread": "Thread",
+      "continuity-engine.thread.plural": "Threads",
+      "continuity-engine.clock": "Clock",
+      "continuity-engine.clock.plural": "Clocks",
+      "continuity-engine.faction": "Faction",
+      "continuity-engine.faction.plural": "Factions",
+      "continuity-engine.knowledge": "Knowledge",
+      "continuity-engine.knowledge.plural": "Knowledge",
+      "continuity-engine.session": "Session",
+      "continuity-engine.session.plural": "Sessions",
+      "continuity-engine.beat": "Beat",
+      "continuity-engine.beat.plural": "Beats"
+    }
+  },
+  "CONTINUITY": {
+    "SheetDefault": "Continuity Page"
+  }
+}
