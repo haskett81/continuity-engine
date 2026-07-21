@@ -1,5 +1,5 @@
-<form class="continuity-engine page-sheet" autocomplete="off">
+<div class="continuity-engine page-sheet">
   {{#each sheetFields as |field key|}}
     {{formGroup field value=(lookup ../system key) name=key localize=true}}
   {{/each}}
-</form>
+</div>
