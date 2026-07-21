@@ -29,8 +29,25 @@ export class ContinuityPageSheet extends SheetBase {
   static DEFAULT_OPTIONS = {
     classes: ["continuity-engine", "page-sheet"],
     position: { width: 520, height: "auto" as const },
-    form: { submitOnChange: true, closeOnSubmit: false },
+    form: {
+      handler: ContinuityPageSheet.#onSubmitForm,
+      submitOnChange: true,
+      closeOnSubmit: false,
+    },
   };
+
+  // Live-tested: DocumentSheetV2 does NOT auto-apply form data to the
+  // document without an explicit handler — submitOnChange alone had nothing
+  // to call, so every change was silently discarded (confirmed via direct
+  // document.update() working fine while sheet-driven changes did nothing).
+  static async #onSubmitForm(
+    this: ContinuityPageSheet,
+    _event: Event,
+    _form: HTMLFormElement,
+    formData: { object: Record<string, unknown> },
+  ): Promise<void> {
+    await this.document.update(formData.object);
+  }
 
   static PARTS = {
     form: { template: "modules/continuity-engine/templates/page-sheet.hbs" },
