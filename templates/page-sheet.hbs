@@ -1,5 +1,5 @@
 <div class="continuity-engine page-sheet">
   {{#each sheetFields as |field key|}}
-    {{formGroup field value=(lookup ../system key) name=key localize=true}}
+    {{formGroup field value=(lookup ../system key) name=(concat "system." key) localize=true}}
   {{/each}}
 </div>
