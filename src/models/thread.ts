@@ -1,3 +1,6 @@
+import { staleness } from "../derive/staleness.js";
+import { getLedger } from "../state/ledger.js";
+
 const fields = foundry.data.fields;
 
 function threadSchema() {
@@ -15,8 +18,18 @@ function threadSchema() {
       min: 0,
       max: 10,
     }),
-    openedSession: new fields.NumberField({ required: true, integer: true, initial: 0 }),
-    lastTouchedSession: new fields.NumberField({ required: true, integer: true, initial: 0 }),
+    openedSession: new fields.NumberField({
+      required: true,
+      nullable: false,
+      integer: true,
+      initial: 0,
+    }),
+    lastTouchedSession: new fields.NumberField({
+      required: true,
+      nullable: false,
+      integer: true,
+      initial: 0,
+    }),
     resolvedSession: new fields.NumberField({
       required: false,
       nullable: true,
@@ -38,6 +51,9 @@ export class ThreadModel extends foundry.abstract.TypeDataModel<
     return threadSchema();
   }
 
-  // staleness = currentSession - lastTouchedSession. Deferred to P1: needs the
-  // world ledger singleton (spec §5) which doesn't exist yet in P0.
+  declare staleness: number;
+
+  override prepareDerivedData(): void {
+    this.staleness = staleness(this.lastTouchedSession, getLedger().currentSession);
+  }
 }

@@ -1,10 +1,18 @@
+import { beatDebt } from "../derive/beat.js";
+import { getLedger } from "../state/ledger.js";
+
 const fields = foundry.data.fields;
 
 function beatSchema() {
   return {
     actor: new fields.DocumentUUIDField({ required: true }),
     hook: new fields.HTMLField({ required: true, blank: true }),
-    lastServedSession: new fields.NumberField({ required: true, integer: true, initial: 0 }),
+    lastServedSession: new fields.NumberField({
+      required: true,
+      nullable: false,
+      integer: true,
+      initial: 0,
+    }),
     stage: new fields.StringField({
       required: true,
       initial: "seeded",
@@ -21,5 +29,9 @@ export class BeatModel extends foundry.abstract.TypeDataModel<
     return beatSchema();
   }
 
-  // `debt` derived field deferred to P1 (spec §4.6).
+  declare debt: number;
+
+  override prepareDerivedData(): void {
+    this.debt = beatDebt(this.lastServedSession, getLedger().currentSession);
+  }
 }

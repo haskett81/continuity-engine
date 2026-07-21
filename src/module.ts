@@ -7,6 +7,8 @@ import {
   BeatModel,
 } from "./models/index.js";
 import { registerSheets } from "./sheets/register.js";
+import { registerLedger } from "./state/ledger.js";
+import { registerCockpitButton } from "./apps/cockpit/register.js";
 
 Hooks.once("init", () => {
   Object.assign(CONFIG.JournalEntryPage.dataModels, {
@@ -19,4 +21,7 @@ Hooks.once("init", () => {
   });
 
   registerSheets();
+  registerLedger();
 });
+
+registerCockpitButton();

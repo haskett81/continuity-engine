@@ -1,0 +1,43 @@
+<section class="continuity-cockpit-board">
+  <p class="session-line">Current session: {{currentSession}}</p>
+
+  {{#if nothingFlagged}}
+    <p class="nothing-flagged">Nothing needs attention right now.</p>
+  {{/if}}
+
+  {{#if staleThreads.length}}
+    <h3>Stale Threads</h3>
+    <ul>
+      {{#each staleThreads}}
+        <li>{{this.name}} — stale {{this.staleness}} sessions</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#if nearClocks.length}}
+    <h3>Clocks Near Completion</h3>
+    <ul>
+      {{#each nearClocks}}
+        <li>{{this.name}} — {{this.remaining}} segments remaining</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#if beatDebt.length}}
+    <h3>Beat Debt</h3>
+    <ul>
+      {{#each beatDebt}}
+        <li>{{this.name}} — {{this.debt}} sessions since last served</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#if divergentKnowledge.length}}
+    <h3>Divergent Knowledge</h3>
+    <ul>
+      {{#each divergentKnowledge}}
+        <li>{{this.name}}</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</section>

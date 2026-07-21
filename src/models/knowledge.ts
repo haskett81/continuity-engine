@@ -1,3 +1,5 @@
+import { divergent } from "../derive/divergence.js";
+
 const fields = foundry.data.fields;
 
 function knowledgeSchema() {
@@ -34,5 +36,12 @@ export class KnowledgeModel extends foundry.abstract.TypeDataModel<
     return knowledgeSchema();
   }
 
-  // `divergent` derived flag deferred to P1 (spec §4.4).
+  declare divergent: boolean;
+
+  override prepareDerivedData(): void {
+    // partyBelief is an HTMLField; ProseMirror leaves empty content as markup
+    // like "<p></p>" rather than "", so strip tags before the emptiness check.
+    const plainBelief = this.partyBelief.replace(/<[^>]*>/g, "");
+    this.divergent = divergent(plainBelief, this.reliability);
+  }
 }
