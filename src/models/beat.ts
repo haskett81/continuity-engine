@@ -8,7 +8,7 @@ function beatSchema() {
     stage: new fields.StringField({
       required: true,
       initial: "seeded",
-      choices: ["seeded", "building", "crisis", "resolved"] as const,
+      choices: { seeded: "Seeded", building: "Building", crisis: "Crisis", resolved: "Resolved" },
     }),
   };
 }

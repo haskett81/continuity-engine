@@ -15,7 +15,7 @@ function knowledgeSchema() {
     reliability: new fields.StringField({
       required: true,
       initial: "rumor",
-      choices: ["confirmed", "plausible", "rumor", "lie"] as const,
+      choices: { confirmed: "Confirmed", plausible: "Plausible", rumor: "Rumor", lie: "Lie" },
     }),
     relatedThreads: new fields.ArrayField(new fields.DocumentUUIDField()),
   };

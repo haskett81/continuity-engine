@@ -7,14 +7,14 @@ function clockSchema() {
     direction: new fields.StringField({
       required: true,
       initial: "progress",
-      choices: ["doom", "progress"] as const,
+      choices: { doom: "Doom", progress: "Progress" },
     }),
     trigger: new fields.HTMLField({ required: true, blank: true }),
     owner: new fields.DocumentUUIDField({ required: false, nullable: true, initial: null }),
     visibility: new fields.StringField({
       required: true,
       initial: "hidden",
-      choices: ["hidden", "vague", "explicit"] as const,
+      choices: { hidden: "Hidden", vague: "Vague", explicit: "Explicit" },
     }),
     lastAdvancedSession: new fields.NumberField({ required: true, integer: true, initial: 0 }),
   };

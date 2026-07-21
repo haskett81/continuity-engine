@@ -5,7 +5,7 @@ function threadSchema() {
     status: new fields.StringField({
       required: true,
       initial: "open",
-      choices: ["open", "dormant", "resolved", "abandoned"] as const,
+      choices: { open: "Open", dormant: "Dormant", resolved: "Resolved", abandoned: "Abandoned" },
     }),
     stakes: new fields.HTMLField({ required: true, blank: true }),
     pressure: new fields.NumberField({
