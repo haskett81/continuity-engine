@@ -22,6 +22,5 @@ Hooks.once("init", () => {
 
   registerSheets();
   registerLedger();
+  registerCockpitEntryPoint();
 });
-
-registerCockpitEntryPoint();
