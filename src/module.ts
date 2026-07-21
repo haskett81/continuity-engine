@@ -8,7 +8,7 @@ import {
 } from "./models/index.js";
 import { registerSheets } from "./sheets/register.js";
 import { registerLedger } from "./state/ledger.js";
-import { registerCockpitButton } from "./apps/cockpit/register.js";
+import { registerCockpitEntryPoint } from "./apps/cockpit/register.js";
 
 Hooks.once("init", () => {
   Object.assign(CONFIG.JournalEntryPage.dataModels, {
@@ -24,4 +24,4 @@ Hooks.once("init", () => {
   registerLedger();
 });
 
-registerCockpitButton();
+registerCockpitEntryPoint();
