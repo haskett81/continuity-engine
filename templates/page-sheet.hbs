@@ -1,8 +1,0 @@
-<div class="continuity-engine page-sheet">
-  {{#if subtitle}}
-    <p class="continuity-subtitle">{{subtitle}}</p>
-  {{/if}}
-  {{#each sheetFields as |field key|}}
-    {{formGroup field value=(lookup ../system key) name=(concat "system." key) localize=true}}
-  {{/each}}
-</div>

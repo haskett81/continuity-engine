@@ -2,8 +2,7 @@
   "id": "continuity-engine",
   "title": "Continuity",
   "description": "A persistent campaign-state layer for Foundry. Tracks what is true in the world, what the party believes, what is unresolved, and what is owed to each player character — across sessions, permanently, inside Foundry's own document system.",
-  "version": "#{VERSION}#",
-  "manifestPlusVersion": "1.2.0",
+  "version": "0.3.1",
   "compatibility": {
     "minimum": "14",
     "verified": "14"
@@ -29,7 +28,7 @@
     }
   },
   "esmodules": [
-    "scripts/module.js"
+    "module.js"
   ],
   "styles": [
     "styles/sheet.css",
@@ -42,9 +41,9 @@
       "path": "lang/en.json"
     }
   ],
-  "url": "#{URL}#",
-  "manifest": "#{MANIFEST}#",
-  "download": "#{DOWNLOAD}#",
+  "url": "https://github.com/haskett81/continuity-engine",
+  "manifest": "https://github.com/haskett81/continuity-engine/releases/latest/download/module.json",
+  "download": "https://github.com/haskett81/continuity-engine/releases/latest/download/module.zip",
   "license": "LICENSE",
   "readme": "README.md"
 }

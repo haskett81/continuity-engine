@@ -21,7 +21,7 @@ export class LedgerModel extends foundry.abstract.DataModel<ReturnType<typeof le
 // namespace by default; a third-party module's keys are meant to be added via
 // declaration-merging its own SettingConfig entries, which is disproportionate
 // boilerplate for a two-call surface. Cast narrowly here instead — same
-// pattern as the ApplicationV2 mixin workaround in page-sheet.ts. `game` is
+// pattern as the ApplicationV2 mixin workaround in sheets/base-sheet.ts. `game` is
 // also typed as possibly undefined pre-ready; this only ever runs inside the
 // init hook, where it's already populated.
 type UntypedSettings = {

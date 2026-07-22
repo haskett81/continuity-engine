@@ -1,0 +1,87 @@
+name: Release
+
+# Fires when you push a version tag like v1.0.0.
+# `npm run release` (see package.json) creates and pushes that tag for you,
+# so shipping a version is one command — this workflow does the rest unattended.
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write   # needed to create the GitHub Release and attach assets
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      # Present only after you add the secret; the Foundry-registry step is skipped until then,
+      # so the pipeline works from day one and starts publishing to the registry the moment you add it.
+      HAS_PKG: ${{ secrets.FVTT_PACKAGE_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install
+        run: npm ci
+
+      - name: Derive version from tag
+        id: v
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        run: npm run build
+
+      - name: Stamp release URLs into dist/module.json
+        env:
+          VERSION: ${{ steps.v.outputs.version }}
+          REPO: ${{ github.repository }}   # e.g. cyrus/continuity-engine
+        run: |
+          node --input-type=module <<'EOF'
+          import { readFileSync, writeFileSync } from "node:fs";
+          const { VERSION, REPO } = process.env;
+          const base = `https://github.com/${REPO}/releases`;
+          const m = JSON.parse(readFileSync("dist/module.json", "utf8"));
+          m.version  = VERSION;
+          m.url      = `https://github.com/${REPO}`;
+          // The manifest people register/share always points at "latest":
+          m.manifest = `${base}/latest/download/module.json`;
+          // The download is PINNED to this exact version — the one correctness rule that
+          // keeps Foundry auto-updates from breaking. Never point download at /latest.
+          m.download = `${base}/download/v${VERSION}/module.zip`;
+          writeFileSync("dist/module.json", JSON.stringify(m, null, 2));
+          console.log(`Stamped v${VERSION} → ${m.download}`);
+          EOF
+
+      - name: Package
+        run: |
+          cd dist
+          zip -r ../module.zip . -x ".*"
+          cd ..
+          cp dist/module.json module.json
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            module.json
+            module.zip
+          fail_on_unmatched_files: true
+
+      # ── Optional: auto-publish to the official Foundry package registry ──
+      # Runs ONLY once FVTT_PACKAGE_ID exists (i.e. after your module is registered
+      # via the Package Submission Form). Until then it's skipped, and nothing breaks.
+      - name: Publish to Foundry registry
+        if: ${{ env.HAS_PKG != '' }}
+        uses: eXaminator/foundry-auto-release@1.0.6
+        with:
+          manifest-path: "dist/module.json"
+          package-id: ${{ secrets.FVTT_PACKAGE_ID }}
+          fvtt-username: ${{ secrets.FVTT_USERNAME }}
+          fvtt-password: ${{ secrets.FVTT_PASSWORD }}

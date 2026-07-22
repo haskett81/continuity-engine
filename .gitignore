@@ -1,4 +1,5 @@
 node_modules/
-scripts/
+dist/
+module.zip
 *.log
 .DS_Store
