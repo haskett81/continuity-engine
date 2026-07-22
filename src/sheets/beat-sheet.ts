@@ -19,7 +19,7 @@ export class BeatSheet extends ContinuityPageSheet {
     const context = await super._prepareContext(options);
     const system = this.document.system as unknown as BeatSystemLike;
 
-    const chips: Chip[] = [{ text: i18n().localize(`CE.beat.stage.${system.stage}`), tone: "neutral" }];
+    const chips: Chip[] = [{ text: i18n().localize(`CE.beat.chip.stage.${system.stage}`), tone: "neutral" }];
     const overdue = overdueChip(system.debt);
     if (overdue) chips.push(overdue);
 

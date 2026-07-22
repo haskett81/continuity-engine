@@ -169,7 +169,13 @@
         "hint": "The most recent session this character got a scene of their own."
       },
       "chip": {
-        "overdue": "Overdue — {n} sessions"
+        "overdue": "Overdue — {n} sessions",
+        "stage": {
+          "seeded": "Seeded",
+          "surfaced": "Surfaced",
+          "escalating": "Escalating",
+          "resolved": "Resolved"
+        }
       }
     },
     "session": {
