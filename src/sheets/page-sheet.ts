@@ -20,6 +20,17 @@ const SheetBase = HandlebarsApplicationMixin(DocumentSheetV2) as unknown as new 
   ...args: any[]
 ) => SheetBaseLike;
 
+// One-line orientation per page type — UX pass criterion 1 (self-explanatory):
+// the page's purpose should be legible on open, without external docs.
+const SUBTITLES: Record<string, string> = {
+  "continuity-engine.thread": "An open story thread the campaign is tracking.",
+  "continuity-engine.clock": "A filling clock tracking pressure toward an event.",
+  "continuity-engine.faction": "A power group, its agenda, and where it stands with the party.",
+  "continuity-engine.knowledge": "Track what's true vs. what the party believes — and flag the gap.",
+  "continuity-engine.session": "What happened, per session.",
+  "continuity-engine.beat": "Personal-arc beats each PC is owed — so no one goes dark.",
+};
+
 // Minimal P0 sheet: auto-renders scalar (string/HTML/number/boolean) fields
 // from the page's own system schema so every sub-type is editable out of the
 // box. Relational fields (ArrayField/DocumentUUIDField — owners, clocks,
@@ -71,6 +82,11 @@ export class ContinuityPageSheet extends SheetBase {
       }
     }
 
-    return { ...context, system: page.system, sheetFields };
+    return {
+      ...context,
+      system: page.system,
+      sheetFields,
+      subtitle: SUBTITLES[page.type] ?? "",
+    };
   }
 }

@@ -1,0 +1,7 @@
+.continuity-engine.page-sheet .continuity-subtitle {
+  font-style: italic;
+  opacity: 0.75;
+  margin: 0 0 0.75em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+}
