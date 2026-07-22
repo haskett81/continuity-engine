@@ -1,0 +1,162 @@
+/* Same spacing tokens as styles/sheet.css, redefined here since the Cockpit
+   window isn't a `.ce-sheet` and shouldn't depend on that file's scoping. */
+.continuity-engine.cockpit {
+  --ce-gap-field: 16px;
+  --ce-gap-group: 24px;
+}
+
+.continuity-engine.cockpit .window-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Foundry's generic tab-navigation.hbs markup — styled generically since its
+   exact class names weren't hand-verified line-by-line, only confirmed
+   functionally (clicking a nav item with data-action="tab" switches
+   tabGroups correctly, live-tested during P2). If Foundry's own default
+   nav styling already covers this adequately, these rules are additive
+   polish, not load-bearing. */
+.continuity-engine.cockpit nav.tabs {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+  padding-bottom: 4px;
+  margin-bottom: var(--ce-gap-group);
+}
+
+.continuity-engine.cockpit nav.tabs .item {
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: 4px 4px 0 0;
+  opacity: 0.7;
+}
+
+.continuity-engine.cockpit nav.tabs .item.active {
+  opacity: 1;
+  font-weight: 600;
+  background: var(--color-bg-option, #e3e3e3);
+}
+
+.ce-cockpit-tab {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.ce-cockpit-session-line {
+  font-weight: 600;
+  margin-bottom: var(--ce-gap-group);
+}
+
+.ce-cockpit-empty {
+  opacity: 0.65;
+  font-style: italic;
+}
+
+.ce-cockpit-note {
+  opacity: 0.75;
+  font-size: var(--font-size-12, 12px);
+}
+
+.ce-cockpit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ce-cockpit-list > li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ce-cockpit-list > li:last-child {
+  border-bottom: none;
+}
+
+/* Threads table */
+.ce-cockpit-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ce-cockpit-table th,
+.ce-cockpit-table td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+}
+
+.ce-cockpit-sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.ce-cockpit-sortable:hover {
+  opacity: 0.8;
+}
+
+/* Clocks: segment pips */
+.ce-cockpit-clock-row {
+  gap: 8px;
+}
+
+.ce-cockpit-pips {
+  display: flex;
+  gap: 4px;
+}
+
+.ce-cockpit-pip {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+  cursor: pointer;
+  background: transparent;
+}
+
+.ce-cockpit-pip--filled.ce-cockpit-pip--doom {
+  background: #c9444f;
+  border-color: #c9444f;
+}
+
+.ce-cockpit-pip--filled.ce-cockpit-pip--progress {
+  background: #4f9a52;
+  border-color: #4f9a52;
+}
+
+/* Factions: compact slider */
+.ce-cockpit-slider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ce-cockpit-slider label {
+  font-size: var(--font-size-11, 11px);
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.ce-cockpit-slider input[type="range"] {
+  flex: 1 1 auto;
+}
+
+/* Cast: actor avatar */
+.ce-cockpit-cast-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 4px;
+}
+
+.ce-cockpit-cast-row,
+.ce-cockpit-faction-row,
+.ce-cockpit-knowledge-row,
+.ce-cockpit-log-row {
+  gap: 6px;
+}

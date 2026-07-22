@@ -1,4 +1,6 @@
-import { ContinuityPageSheet, sessionFieldContext, staleChip, i18n, type Chip } from "./base-sheet.js";
+import { ContinuityPageSheet, sessionFieldContext } from "./base-sheet.js";
+import { staleChip, type Chip } from "../ui/chips.js";
+import { i18n } from "../foundry-utils.js";
 import { pressureBand } from "../derive/pressure.js";
 
 interface ThreadSystemLike {

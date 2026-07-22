@@ -1,4 +1,5 @@
 import { divergent } from "../derive/divergence.js";
+import { stripHtml } from "../ui/text.js";
 
 const fields = foundry.data.fields;
 
@@ -57,9 +58,6 @@ export class KnowledgeModel extends foundry.abstract.TypeDataModel<
   declare divergent: boolean;
 
   override prepareDerivedData(): void {
-    // partyBelief is an HTMLField; ProseMirror leaves empty content as markup
-    // like "<p></p>" rather than "", so strip tags before the emptiness check.
-    const plainBelief = this.partyBelief.replace(/<[^>]*>/g, "");
-    this.divergent = divergent(plainBelief, this.reliability);
+    this.divergent = divergent(stripHtml(this.partyBelief), this.reliability);
   }
 }

@@ -1,0 +1,25 @@
+<section class="ce-cockpit-tab ce-cockpit-factions">
+  {{#if factions.length}}
+  <ul class="ce-cockpit-list">
+    {{#each factions}}
+    <li class="ce-cockpit-faction-row">
+      <a data-action="openDoc" data-uuid="{{this.uuid}}">{{this.name}}</a>
+      <span class="ce-chip ce-chip--{{this.dispositionTone}}">{{this.dispositionBandLabel}}</span>
+      <div class="ce-cockpit-slider">
+        <label>{{localize "CE.cockpit.factions.columnDisposition"}}</label>
+        <input type="range" min="-100" max="100" step="5" value="{{this.disposition}}" data-cockpit-field="system.disposition" data-uuid="{{this.uuid}}" />
+      </div>
+      <p class="ce-cockpit-note">{{localize "CE.cockpit.factions.columnCurrentMove"}}: {{this.currentMovePreview}}</p>
+      {{#if this.clocks.length}}
+      <p class="ce-cockpit-note">
+        {{localize "CE.cockpit.factions.columnClocks"}}:
+        {{#each this.clocks}}<a data-action="openDoc" data-uuid="{{this.uuid}}">{{this.name}}</a>{{#unless @last}}, {{/unless}}{{/each}}
+      </p>
+      {{/if}}
+    </li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p class="ce-cockpit-empty">{{localize "CE.cockpit.factions.empty"}}</p>
+  {{/if}}
+</section>

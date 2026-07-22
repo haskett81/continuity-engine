@@ -28,6 +28,55 @@
       "continuityGroup": "Continuity Engine",
       "foundryGroup": "Foundry"
     },
+    "cockpit": {
+      "tab": {
+        "board": "Board",
+        "threads": "Threads",
+        "clocks": "Clocks",
+        "factions": "Factions",
+        "knowledge": "Knowledge",
+        "cast": "Cast",
+        "log": "Log"
+      },
+      "board": {
+        "nothingFlagged": "Nothing needs attention right now.",
+        "staleThreads": "Stale Threads",
+        "nearClocks": "Clocks Near Completion",
+        "beatDebt": "Beat Debt",
+        "divergentKnowledge": "Divergent Knowledge",
+        "remaining": "{n} segments remaining"
+      },
+      "threads": {
+        "columnName": "Name",
+        "columnStatus": "Status",
+        "columnPressure": "Pressure",
+        "columnStaleness": "Stale",
+        "columnOwner": "Owner",
+        "empty": "No threads yet."
+      },
+      "clocks": {
+        "empty": "No clocks yet."
+      },
+      "factions": {
+        "columnDisposition": "Disposition",
+        "columnCurrentMove": "Current move",
+        "columnClocks": "Linked clocks",
+        "empty": "No factions yet."
+      },
+      "knowledge": {
+        "columnTruth": "Truth",
+        "columnBelief": "Party believes",
+        "empty": "No knowledge yet."
+      },
+      "cast": {
+        "columnThreadsOwned": "Threads owned",
+        "empty": "No beats assigned to any character yet."
+      },
+      "log": {
+        "setCurrent": "Set current",
+        "empty": "No sessions logged yet."
+      }
+    },
     "thread": {
       "name": { "placeholder": "The Veiled Envoy" },
       "gate": { "label": "Visible to players" },

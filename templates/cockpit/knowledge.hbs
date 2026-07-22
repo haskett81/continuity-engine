@@ -1,0 +1,18 @@
+<section class="ce-cockpit-tab ce-cockpit-knowledge">
+  {{#if knowledge.length}}
+  <ul class="ce-cockpit-list">
+    {{#each knowledge}}
+    <li class="ce-cockpit-knowledge-row">
+      <a data-action="openDoc" data-uuid="{{this.uuid}}">{{this.name}}</a>
+      <div class="ce-chips">
+        {{#each this.chips}}<span class="ce-chip ce-chip--{{this.tone}}">{{this.text}}</span>{{/each}}
+      </div>
+      <p class="ce-cockpit-note"><span class="ce-lock" aria-hidden="true">&#128274;</span> {{localize "CE.cockpit.knowledge.columnTruth"}}: {{this.truthPreview}}</p>
+      <p class="ce-cockpit-note">{{localize "CE.cockpit.knowledge.columnBelief"}}: {{this.beliefPreview}}</p>
+    </li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p class="ce-cockpit-empty">{{localize "CE.cockpit.knowledge.empty"}}</p>
+  {{/if}}
+</section>

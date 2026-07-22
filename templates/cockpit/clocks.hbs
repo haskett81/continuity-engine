@@ -1,0 +1,26 @@
+<section class="ce-cockpit-tab ce-cockpit-clocks">
+  {{#if clocks.length}}
+  <ul class="ce-cockpit-list">
+    {{#each clocks}}
+    <li class="ce-cockpit-clock-row">
+      <a data-action="openDoc" data-uuid="{{this.uuid}}">{{this.name}}</a>
+      <div class="ce-cockpit-pips">
+        {{#each this.pips}}
+          <span
+            class="ce-cockpit-pip ce-cockpit-pip--{{../direction}} {{#if this.filled}}ce-cockpit-pip--filled{{/if}}"
+            data-action="advanceClock"
+            data-uuid="{{../uuid}}"
+            data-segment="{{this.index}}"
+          ></span>
+        {{/each}}
+      </div>
+      <div class="ce-chips">
+        {{#each this.chips}}<span class="ce-chip ce-chip--{{this.tone}}">{{this.text}}</span>{{/each}}
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p class="ce-cockpit-empty">{{localize "CE.cockpit.clocks.empty"}}</p>
+  {{/if}}
+</section>

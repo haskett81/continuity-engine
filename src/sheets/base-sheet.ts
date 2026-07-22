@@ -1,5 +1,5 @@
 import { getCurrentSession, setCurrentSession } from "../state/session.js";
-import { getLedger } from "../state/ledger.js";
+import { i18n, openDocumentSheet } from "../foundry-utils.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { DocumentSheetV2 } = foundry.applications.api;
@@ -21,21 +21,6 @@ interface SheetBaseLike {
 const SheetBase = HandlebarsApplicationMixin(DocumentSheetV2) as unknown as new (
   ...args: any[]
 ) => SheetBaseLike;
-
-// `game` is typed as possibly undefined pre-ready (same gap noted in
-// state/ledger.ts) — every call site here only ever runs while a sheet is
-// actually rendering, well after ready. Narrow cast at this one boundary
-// instead of scattering non-null assertions through every helper below.
-function i18n(): { localize: (key: string) => string; format: (key: string, data?: Record<string, string>) => string } {
-  return (game as unknown as { i18n: ReturnType<typeof i18n> }).i18n;
-}
-
-export type ChipTone = "neutral" | "warn" | "alert" | "positive" | "negative";
-
-export interface Chip {
-  text: string;
-  tone: ChipTone;
-}
 
 export interface SessionFieldContext {
   name: string;
@@ -129,31 +114,6 @@ export async function dropListContext(opts: {
   };
 }
 
-/** Spec §1.5 chip table — shared conditions used by more than one page type. */
-export function staleChip(staleness: number): Chip | null {
-  const threshold = (getLedger().config as { staleThreshold: number }).staleThreshold;
-  if (staleness < threshold) return null;
-  return { text: i18n().format("CE.common.staleChip", { n: String(staleness) }), tone: "warn" };
-}
-
-export function overdueChip(debt: number): Chip | null {
-  const threshold = (getLedger().config as { beatDebtThreshold: number }).beatDebtThreshold;
-  if (debt < threshold) return null;
-  return { text: i18n().format("CE.beat.chip.overdue", { n: String(debt) }), tone: "warn" };
-}
-
-export function clockFillChip(filled: number, segments: number): Chip | null {
-  if (filled >= segments) return { text: i18n().localize("CE.clock.chip.filled"), tone: "alert" };
-  if (filled === segments - 1) return { text: i18n().localize("CE.clock.chip.nearlyFull"), tone: "warn" };
-  return null;
-}
-
-export function divergentChip(divergent: boolean): Chip | null {
-  return divergent ? { text: i18n().localize("CE.knowledge.chip.divergent"), tone: "warn" } : null;
-}
-
-export { i18n };
-
 export abstract class ContinuityPageSheet extends SheetBase {
   static DEFAULT_OPTIONS = {
     classes: ["continuity-engine", "ce-sheet"],
@@ -225,7 +185,7 @@ export abstract class ContinuityPageSheet extends SheetBase {
   static #onOpenDoc(_event: PointerEvent, target: HTMLElement): void {
     const uuid = target.dataset.uuid;
     if (!uuid) return;
-    void fromUuid(uuid).then((doc) => (doc as unknown as { sheet?: { render: (force: boolean) => void } })?.sheet?.render(true));
+    openDocumentSheet(uuid);
   }
 
   static #onSetCurrent(this: ContinuityPageSheet): void {

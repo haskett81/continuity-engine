@@ -1,4 +1,6 @@
-import { ContinuityPageSheet, sessionFieldContext, divergentChip, i18n, type Chip } from "./base-sheet.js";
+import { ContinuityPageSheet, sessionFieldContext } from "./base-sheet.js";
+import { divergentChip, type Chip } from "../ui/chips.js";
+import { i18n } from "../foundry-utils.js";
 
 interface KnowledgeSystemLike {
   truth: string;

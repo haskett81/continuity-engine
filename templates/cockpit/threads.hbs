@@ -1,0 +1,38 @@
+<section class="ce-cockpit-tab ce-cockpit-threads">
+  {{#if threads.length}}
+  <table class="ce-cockpit-table">
+    <thead>
+      <tr>
+        <th>{{localize "CE.cockpit.threads.columnName"}}</th>
+        <th>{{localize "CE.cockpit.threads.columnStatus"}}</th>
+        <th class="ce-cockpit-sortable" data-action="sortThreads" data-sort-key="pressure">
+          {{localize "CE.cockpit.threads.columnPressure"}} {{threadSortColumns.pressure.arrow}}
+        </th>
+        <th class="ce-cockpit-sortable" data-action="sortThreads" data-sort-key="staleness">
+          {{localize "CE.cockpit.threads.columnStaleness"}} {{threadSortColumns.staleness.arrow}}
+        </th>
+        <th class="ce-cockpit-sortable" data-action="sortThreads" data-sort-key="owner">
+          {{localize "CE.cockpit.threads.columnOwner"}} {{threadSortColumns.owner.arrow}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each threads}}
+      <tr>
+        <td><a data-action="openDoc" data-uuid="{{this.uuid}}">{{this.name}}</a></td>
+        <td>
+          <select data-cockpit-field="system.status" data-uuid="{{this.uuid}}">
+            {{selectOptions ../threadStatusChoices selected=this.status}}
+          </select>
+        </td>
+        <td>{{this.pressure}} <span class="ce-cockpit-note">({{this.pressureBandLabel}})</span></td>
+        <td>{{this.staleness}}</td>
+        <td>{{this.ownerName}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  <p class="ce-cockpit-empty">{{localize "CE.cockpit.threads.empty"}}</p>
+  {{/if}}
+</section>

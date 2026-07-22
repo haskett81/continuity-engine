@@ -1,4 +1,6 @@
-import { ContinuityPageSheet, dropSlotContext, sessionFieldContext, i18n, type Chip, type ChipTone } from "./base-sheet.js";
+import { ContinuityPageSheet, dropSlotContext, sessionFieldContext } from "./base-sheet.js";
+import { type Chip, type ChipTone } from "../ui/chips.js";
+import { i18n } from "../foundry-utils.js";
 
 interface FactionSystemLike {
   disposition: number;

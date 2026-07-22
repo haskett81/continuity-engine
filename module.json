@@ -32,8 +32,8 @@
     "scripts/module.js"
   ],
   "styles": [
-    "styles/module.css",
-    "styles/sheet.css"
+    "styles/sheet.css",
+    "styles/cockpit.css"
   ],
   "languages": [
     {

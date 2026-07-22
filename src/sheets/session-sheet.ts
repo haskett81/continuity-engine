@@ -1,4 +1,6 @@
-import { ContinuityPageSheet, dropListContext, i18n, type Chip } from "./base-sheet.js";
+import { ContinuityPageSheet, dropListContext } from "./base-sheet.js";
+import { type Chip } from "../ui/chips.js";
+import { i18n } from "../foundry-utils.js";
 
 interface SessionSystemLike {
   number: number;

@@ -1,0 +1,20 @@
+<section class="ce-cockpit-tab ce-cockpit-log">
+  {{#if sessions.length}}
+  <ul class="ce-cockpit-list">
+    {{#each sessions}}
+    <li class="ce-cockpit-log-row">
+      <a data-action="openDoc" data-uuid="{{this.uuid}}">{{this.name}}</a>
+      {{#if this.date}}<span class="ce-cockpit-note">{{this.date}}</span>{{/if}}
+      {{#if this.currentChip}}
+        <span class="ce-chip ce-chip--{{this.currentChip.tone}}">{{this.currentChip.text}}</span>
+      {{else}}
+        <button type="button" data-action="setLogCurrent" data-uuid="{{this.uuid}}">{{localize "CE.cockpit.log.setCurrent"}}</button>
+      {{/if}}
+      {{#if this.recapPreview}}<p class="ce-cockpit-note">{{this.recapPreview}}</p>{{/if}}
+    </li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p class="ce-cockpit-empty">{{localize "CE.cockpit.log.empty"}}</p>
+  {{/if}}
+</section>

@@ -12,14 +12,9 @@
 //   - It fires `Hooks.on("renderDialogV2", (app, html, context, options) =>
 //     ...)` with `html` as a raw `HTMLDialogElement` (ApplicationV2's
 //     standard render-hook shape), not jQuery.
-const TYPE_ORDER = ["session", "thread", "faction", "clock", "knowledge", "beat"];
+import { i18n } from "../foundry-utils.js";
 
-// `game` is typed as possibly undefined pre-ready — this hook only ever
-// fires from user interaction well after ready. Same narrow-cast pattern as
-// sheets/base-sheet.ts's i18n() helper.
-function i18n(): { localize: (key: string) => string } {
-  return (game as unknown as { i18n: ReturnType<typeof i18n> }).i18n;
-}
+const TYPE_ORDER = ["session", "thread", "faction", "clock", "knowledge", "beat"];
 
 export function registerTypePickerGrouping(): void {
   Hooks.on("renderDialogV2", (_app: unknown, html: HTMLElement) => {

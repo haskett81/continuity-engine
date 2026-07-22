@@ -1,0 +1,24 @@
+<section class="ce-cockpit-tab ce-cockpit-cast">
+  {{#if cast.length}}
+  <ul class="ce-cockpit-list">
+    {{#each cast}}
+    <li class="ce-cockpit-cast-row">
+      {{#if this.actorImg}}<img class="ce-cockpit-cast-img" src="{{this.actorImg}}" alt="" />{{/if}}
+      <a data-action="openDoc" data-uuid="{{this.actorUuid}}">{{this.actorName}}</a>
+      <a data-action="openDoc" data-uuid="{{this.beatUuid}}" class="ce-cockpit-note">({{this.beatName}})</a>
+      <div class="ce-chips">
+        {{#each this.chips}}<span class="ce-chip ce-chip--{{this.tone}}">{{this.text}}</span>{{/each}}
+      </div>
+      {{#if this.ownedThreads.length}}
+      <p class="ce-cockpit-note">
+        {{localize "CE.cockpit.cast.columnThreadsOwned"}}:
+        {{#each this.ownedThreads}}<a data-action="openDoc" data-uuid="{{this.uuid}}">{{this.name}}</a>{{#unless @last}}, {{/unless}}{{/each}}
+      </p>
+      {{/if}}
+    </li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p class="ce-cockpit-empty">{{localize "CE.cockpit.cast.empty"}}</p>
+  {{/if}}
+</section>

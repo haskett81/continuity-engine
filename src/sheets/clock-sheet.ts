@@ -1,4 +1,6 @@
-import { ContinuityPageSheet, dropSlotContext, sessionFieldContext, clockFillChip, i18n, type Chip } from "./base-sheet.js";
+import { ContinuityPageSheet, dropSlotContext, sessionFieldContext } from "./base-sheet.js";
+import { clockFillChip, type Chip } from "../ui/chips.js";
+import { i18n } from "../foundry-utils.js";
 
 interface ClockSystemLike {
   segments: number;
