@@ -2,13 +2,6 @@ const fields = foundry.data.fields;
 
 function ledgerSchema() {
   return {
-    currentSession: new fields.NumberField({
-      required: true,
-      nullable: false,
-      integer: true,
-      initial: 0,
-      min: 0,
-    }),
     campaignName: new fields.StringField({ required: true, blank: true, initial: "" }),
     sessionInProgress: new fields.BooleanField({ required: true, initial: false }),
     config: new fields.SchemaField({
@@ -40,7 +33,7 @@ export function registerLedger(): void {
   const settings = (game as unknown as { settings: UntypedSettings }).settings;
   settings.register("continuity-engine", "ledger", {
     name: "Continuity Ledger",
-    hint: "World-scoped campaign state read by every Continuity Engine derived field (staleness, beat debt, clock status).",
+    hint: "World-scoped campaign configuration — thresholds for flagging stale threads and beat debt on the Cockpit Board. Current session lives on the Session page flagged \"current\", not here.",
     scope: "world",
     config: true,
     type: LedgerModel,

@@ -1,0 +1,40 @@
+<div class="ce-sheet">
+  <header class="ce-sheet__header">
+    <input class="ce-name-input" type="text" name="name" value="{{name}}" placeholder="{{localize "CE.beat.name.placeholder"}}" />
+    <div class="ce-sheet__header-row">
+      <div class="ce-chips">
+        {{#each chips}}<span class="ce-chip ce-chip--{{this.tone}}">{{this.text}}</span>{{/each}}
+      </div>
+      <label class="ce-gate">
+        <input type="checkbox" name="system.playerVisible" {{checked system.playerVisible}} />
+        {{localize "CE.beat.gate.label"}}
+      </label>
+    </div>
+  </header>
+
+  <div class="ce-sheet__body">
+    {{> continuity-drop-slot character}}
+
+    <div class="ce-group-break"></div>
+
+    <div class="ce-field ce-richtext" style="--ce-rt-min: 110px" data-placeholder="{{localize "CE.beat.hook.placeholder"}}">
+      <label for="system.hook">{{localize "CE.beat.hook.label"}}</label>
+      {{editor system.hook target="system.hook" button=true engine="prosemirror" collaborate=false editable=true}}
+    </div>
+
+    <div class="ce-field">
+      <label for="system.stage">{{localize "CE.beat.stage.label"}}</label>
+      <select id="system.stage" name="system.stage">
+        {{selectOptions stageChoices selected=system.stage}}
+      </select>
+    </div>
+
+    <div class="ce-group-break"></div>
+
+    {{> continuity-session-field lastSpotlightSession}}
+  </div>
+
+  <footer class="ce-sheet__footer">
+    <span class="ce-current-session">{{localize "CE.common.currentSessionFooter" session=lastSpotlightSession.currentSession}}</span>
+  </footer>
+</div>

@@ -1,38 +1,24 @@
 import { beatDebt } from "../derive/beat.js";
-import { getLedger } from "../state/ledger.js";
+import { getCurrentSession } from "../state/session.js";
 
 const fields = foundry.data.fields;
 
 function beatSchema() {
   return {
-    actor: new fields.DocumentUUIDField({
-      required: true,
-      label: "PC",
-      hint: "Which character this beat is about. Editable via the Cockpit (P2).",
-    }),
-    hook: new fields.HTMLField({
-      required: true,
-      blank: true,
-      label: "Hook",
-      hint: "Their unresolved personal thing.",
-      placeholder: "Aldric's brother Cael rides with the bailiff's men — a confrontation is overdue.",
-    }),
+    actor: new fields.DocumentUUIDField({ required: true, blank: true, initial: "" }),
+    hook: new fields.HTMLField({ required: true, blank: true }),
     lastServedSession: new fields.NumberField({
       required: true,
       nullable: false,
       integer: true,
       initial: 0,
-      label: "Last Spotlight (Session #)",
-      hint: "Last time this PC got a scene about them. Falling behind flags this PC on the Cockpit Board.",
-      placeholder: "8",
     }),
     stage: new fields.StringField({
       required: true,
       initial: "seeded",
-      choices: { seeded: "Seeded", building: "Building", crisis: "Crisis", resolved: "Resolved" },
-      label: "Stage",
-      hint: "Where this beat is in its arc — Seeded (planted, not yet paid off) through Resolved (paid off).",
+      choices: ["seeded", "surfaced", "escalating", "resolved"],
     }),
+    playerVisible: new fields.BooleanField({ required: true, initial: false }),
   };
 }
 
@@ -44,9 +30,19 @@ export class BeatModel extends foundry.abstract.TypeDataModel<
     return beatSchema();
   }
 
+  // UX spec §6.3 locks in a new stage ladder (seeded/surfaced/escalating/
+  // resolved) replacing the old (seeded/building/crisis/resolved). Runs on
+  // every load; idempotent since a migrated value never matches the old one
+  // again.
+  static override migrateData(source: Record<string, unknown>): Record<string, unknown> {
+    if (source.stage === "building") source.stage = "surfaced";
+    else if (source.stage === "crisis") source.stage = "escalating";
+    return super.migrateData(source);
+  }
+
   declare debt: number;
 
   override prepareDerivedData(): void {
-    this.debt = beatDebt(this.lastServedSession, getLedger().currentSession);
+    this.debt = beatDebt(this.lastServedSession, getCurrentSession());
   }
 }

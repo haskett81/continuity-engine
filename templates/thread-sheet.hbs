@@ -1,0 +1,58 @@
+<div class="ce-sheet">
+  <header class="ce-sheet__header">
+    <input class="ce-name-input" type="text" name="name" value="{{name}}" placeholder="{{localize "CE.thread.name.placeholder"}}" />
+    <div class="ce-sheet__header-row">
+      <div class="ce-chips">
+        {{#each chips}}<span class="ce-chip ce-chip--{{this.tone}}">{{this.text}}</span>{{/each}}
+      </div>
+      <label class="ce-gate">
+        <input type="checkbox" name="system.playerVisible" {{checked system.playerVisible}} />
+        {{localize "CE.thread.gate.label"}}
+      </label>
+    </div>
+  </header>
+
+  <div class="ce-sheet__body">
+    <div class="ce-field">
+      <label for="system.status">{{localize "CE.thread.status.label"}}</label>
+      <select id="system.status" name="system.status">
+        {{selectOptions statusChoices selected=system.status}}
+      </select>
+    </div>
+
+    <div class="ce-group-break"></div>
+
+    <div class="ce-field ce-richtext" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.thread.stakes.placeholder"}}">
+      <label for="system.stakes">{{localize "CE.thread.stakes.label"}}</label>
+      {{editor system.stakes target="system.stakes" button=true engine="prosemirror" collaborate=false editable=true}}
+    </div>
+
+    <div class="ce-field">
+      <label for="system.pressure">{{localize "CE.thread.pressure.label"}}</label>
+      <input type="range" id="system.pressure" name="system.pressure" min="0" max="10" step="1" value="{{system.pressure}}" />
+      <span class="ce-range-readout">{{system.pressure}}</span>
+      <div class="ce-legend">
+        {{#each pressureBands}}
+          <span class="ce-legend__tick {{#if this.active}}ce-legend__tick--active{{/if}}">{{this.name}}</span>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="ce-group-break"></div>
+
+    {{> continuity-session-field openedSession}}
+    {{> continuity-session-field lastTouchedSession}}
+    {{> continuity-session-field resolvedSession disabled=resolvedDisabled}}
+
+    <div class="ce-group-break"></div>
+
+    <div class="ce-field ce-richtext {{#if resolvedDisabled}}ce-richtext--collapsed{{/if}}" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.thread.resolution.placeholder"}}">
+      <label for="system.resolution">{{localize "CE.thread.resolution.label"}}</label>
+      {{editor system.resolution target="system.resolution" button=true engine="prosemirror" collaborate=false editable=true}}
+    </div>
+  </div>
+
+  <footer class="ce-sheet__footer">
+    <span class="ce-current-session">{{localize "CE.common.currentSessionFooter" session=lastTouchedSession.currentSession}}</span>
+  </footer>
+</div>

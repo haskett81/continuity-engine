@@ -4,51 +4,23 @@ const fields = foundry.data.fields;
 
 function knowledgeSchema() {
   return {
-    truth: new fields.HTMLField({
-      required: true,
-      blank: true,
-      label: "Truth (GM only)",
-      hint: "What is actually true. Never shown to players.",
-      placeholder: "The reeve died three nights ago; the bailiff is hiding it to hold the granary.",
-    }),
-    partyBelief: new fields.HTMLField({
-      required: true,
-      blank: true,
-      label: "Party Belief",
-      hint: "What the party currently thinks — may be wrong, partial, or planted.",
-      placeholder: "The reeve rode to the capital and returns by the feast.",
-    }),
-    knownBy: new fields.ArrayField(new fields.DocumentUUIDField(), {
-      label: "Known By",
-      hint: "Which PCs know this. Editable via the Cockpit (P2).",
-    }),
+    truth: new fields.HTMLField({ required: true, blank: true }),
+    partyBelief: new fields.HTMLField({ required: true, blank: true }),
+    knownBy: new fields.ArrayField(new fields.DocumentUUIDField()),
+    partyKnows: new fields.BooleanField({ required: true, initial: false }),
     revealedSession: new fields.NumberField({
       required: false,
       nullable: true,
       integer: true,
       initial: null,
-      label: "Revealed (Session #)",
-      hint: "Session the party learned this. Blank = they don't know yet.",
-      placeholder: "12",
     }),
-    source: new fields.StringField({
-      required: true,
-      blank: true,
-      label: "Source",
-      hint: "Who or what told them.",
-      placeholder: "The bailiff's testimony / a note in the mill / tavern gossip",
-    }),
+    source: new fields.StringField({ required: true, blank: true }),
     reliability: new fields.StringField({
       required: true,
-      initial: "rumor",
-      choices: { confirmed: "Confirmed", plausible: "Plausible", rumor: "Rumor", lie: "Lie" },
-      label: "Reliability",
-      hint: "How trustworthy the belief is. Rumor or Lie flags this page as divergent on the Cockpit Board.",
+      initial: "rumour",
+      choices: ["confirmed", "corroborated", "rumour", "lie"],
     }),
-    relatedThreads: new fields.ArrayField(new fields.DocumentUUIDField(), {
-      label: "Related Threads",
-      hint: "Linked Thread pages. Editable via the Cockpit (P2).",
-    }),
+    relatedThreads: new fields.ArrayField(new fields.DocumentUUIDField()),
   };
 }
 
@@ -63,6 +35,23 @@ export class KnowledgeModel extends foundry.abstract.TypeDataModel<
 > {
   static defineSchema(): ReturnType<typeof knowledgeSchema> {
     return knowledgeSchema();
+  }
+
+  // Sheet UX spec §6.4 locks in a new reliability ladder (confirmed/
+  // corroborated/rumour/lie) replacing the old (confirmed/plausible/rumor/
+  // lie). Also backfills partyKnows for pre-existing pages, matching spec
+  // §4's rule: true where revealed is non-null, else false. Runs on every
+  // load; idempotent — a migrated reliability value never matches the old
+  // one again, and partyKnows, once present in source, is left alone.
+  static override migrateData(source: Record<string, unknown>): Record<string, unknown> {
+    if (source.reliability === "plausible") source.reliability = "corroborated";
+    else if (source.reliability === "rumor") source.reliability = "rumour";
+
+    if (source.partyKnows === undefined) {
+      source.partyKnows = source.revealedSession !== null && source.revealedSession !== undefined;
+    }
+
+    return super.migrateData(source);
   }
 
   declare divergent: boolean;

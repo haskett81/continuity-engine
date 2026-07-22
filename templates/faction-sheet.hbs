@@ -1,0 +1,52 @@
+<div class="ce-sheet">
+  <header class="ce-sheet__header">
+    <label for="ce-faction-name" class="ce-name-label">{{localize "CE.faction.name.label"}}</label>
+    <input id="ce-faction-name" class="ce-name-input" type="text" name="name" value="{{name}}" placeholder="{{localize "CE.faction.name.placeholder"}}" />
+    <div class="ce-sheet__header-row">
+      <div class="ce-chips">
+        {{#each chips}}<span class="ce-chip ce-chip--{{this.tone}}">{{this.text}}</span>{{/each}}
+      </div>
+      <label class="ce-gate">
+        <input type="checkbox" name="system.playerVisible" {{checked system.playerVisible}} />
+        {{localize "CE.faction.gate.label"}}
+      </label>
+    </div>
+  </header>
+
+  <div class="ce-sheet__body">
+    {{> continuity-drop-slot face}}
+
+    <div class="ce-group-break"></div>
+
+    <div class="ce-field">
+      <label for="system.disposition">{{localize "CE.faction.disposition.label"}}</label>
+      <input type="range" id="system.disposition" name="system.disposition" min="-100" max="100" step="5" value="{{system.disposition}}" />
+      <span class="ce-range-readout">{{system.disposition}}</span>
+      <div class="ce-legend ce-legend--disposition">
+        {{#each legend}}
+          <span class="ce-legend__tick {{#if this.active}}ce-legend__tick--active{{/if}}">{{this.label}}</span>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="ce-group-break"></div>
+
+    <div class="ce-field ce-richtext" style="--ce-rt-min: 110px" data-placeholder="{{localize "CE.faction.agenda.placeholder"}}">
+      <label for="system.agenda">{{localize "CE.faction.agenda.label"}}</label>
+      {{editor system.agenda target="system.agenda" button=true engine="prosemirror" collaborate=false editable=true}}
+    </div>
+
+    <div class="ce-field ce-richtext" style="--ce-rt-min: 110px" data-placeholder="{{localize "CE.faction.currentMove.placeholder"}}">
+      <label for="system.currentMove">{{localize "CE.faction.currentMove.label"}}</label>
+      {{editor system.currentMove target="system.currentMove" button=true engine="prosemirror" collaborate=false editable=true}}
+    </div>
+
+    <div class="ce-group-break"></div>
+
+    {{> continuity-session-field lastContact}}
+  </div>
+
+  <footer class="ce-sheet__footer">
+    <span class="ce-current-session">{{localize "CE.common.currentSessionFooter" session=lastContact.currentSession}}</span>
+  </footer>
+</div>

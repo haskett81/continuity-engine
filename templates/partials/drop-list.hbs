@@ -1,0 +1,14 @@
+<div class="ce-field ce-drop-list-field">
+  <label>{{label}}</label>
+  <div class="ce-drop-slot ce-drop-slot--list" data-field="{{field}}" data-multi="true">
+    {{#each docs}}
+      <span class="ce-drop-chip">
+        <img src="{{this.img}}" alt="" />
+        <a data-action="openDoc" data-uuid="{{this.uuid}}">{{this.name}}</a>
+        <button type="button" class="ce-drop-chip__remove" data-action="removeFromList" data-uuid="{{this.uuid}}" aria-label="{{localize "CE.common.remove"}}">&times;</button>
+      </span>
+    {{else}}
+      <span class="ce-drop-slot__empty">{{emptyText}}</span>
+    {{/each}}
+  </div>
+</div>

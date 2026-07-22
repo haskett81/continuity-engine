@@ -1,4 +1,6 @@
 import { getLedger } from "../../state/ledger.js";
+import { getCurrentSession } from "../../state/session.js";
+import { pagesOfType } from "../../state/pages.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ApplicationV2 } = foundry.applications.api;
@@ -30,21 +32,6 @@ interface BeatSystemLike {
 }
 interface KnowledgeSystemLike {
   divergent: boolean;
-}
-
-interface JournalPageLike {
-  name: string;
-  type: string;
-  uuid: string;
-  system: unknown;
-}
-interface JournalEntryLike {
-  pages: { contents: JournalPageLike[] };
-}
-
-function pagesOfType(type: string): JournalPageLike[] {
-  const journal = (game as unknown as { journal: { contents: JournalEntryLike[] } }).journal;
-  return journal.contents.flatMap((entry) => entry.pages.contents).filter((page) => page.type === type);
 }
 
 // P1 scope (spec §6): Board only, read-only. Full tabbed Cockpit with
@@ -96,7 +83,7 @@ export class ContinuityCockpit extends AppBase {
 
     return {
       ...context,
-      currentSession: ledger.currentSession,
+      currentSession: getCurrentSession(),
       staleThreads,
       nearClocks,
       beatDebt,

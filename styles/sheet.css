@@ -1,0 +1,418 @@
+/* Sheet UX spec §1.4 spacing tokens */
+.continuity-engine.ce-sheet {
+  --ce-gap-label: 6px;
+  --ce-gap-field: 16px;
+  --ce-gap-group: 24px;
+  --ce-gap-legend: 8px;
+  min-width: 480px;
+  min-height: 420px;
+}
+
+/* §1.2 sheet skeleton: fixed header/footer, scrolling body */
+.ce-sheet {
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+  height: 100%;
+}
+
+.ce-sheet__header {
+  flex: 0 0 auto;
+  padding-bottom: var(--ce-gap-group);
+  border-bottom: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+}
+
+.ce-sheet__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.5rem;
+  padding-top: var(--ce-gap-group);
+}
+
+.ce-sheet__footer {
+  flex: 0 0 auto;
+  padding-top: 0.5em;
+  margin-top: var(--ce-gap-group);
+  border-top: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+  font-size: var(--font-size-12, 12px);
+  opacity: 0.75;
+}
+
+/* §1.3 header block */
+.ce-name-label {
+  font-size: var(--font-size-12, 12px);
+  opacity: 0.75;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.ce-name-input {
+  width: 100%;
+  font-size: var(--font-size-24, 24px);
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  padding: 2px 0;
+}
+
+.ce-name-input:focus {
+  outline: 2px solid var(--color-cool-4, #7a9bb5);
+  outline-offset: 2px;
+}
+
+.ce-sheet__header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ce-gap-field);
+  margin-top: var(--ce-gap-label);
+}
+
+.ce-gate {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.ce-toggle-btn {
+  cursor: pointer;
+}
+
+.ce-toggle-btn--active {
+  background: var(--color-cool-4, #7a9bb5);
+  color: #fff;
+}
+
+/* §1.5 derived state chips */
+.ce-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ce-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: var(--font-size-11, 11px);
+  line-height: 1.4;
+  border: 1px solid transparent;
+}
+
+.ce-chip--neutral {
+  background: var(--color-bg-option, #e3e3e3);
+  color: var(--color-text-dark-primary, #191813);
+}
+
+.ce-chip--warn {
+  background: #fff3cd;
+  color: #7a5a00;
+  border-color: #e0b400;
+}
+
+.ce-chip--alert {
+  background: #f8d7da;
+  color: #7a1f27;
+  border-color: #c9444f;
+}
+
+.ce-chip--positive {
+  background: #d9f0d9;
+  color: #2e5c2e;
+  border-color: #6fae6f;
+}
+
+.ce-chip--negative {
+  background: #f8d7da;
+  color: #7a1f27;
+  border-color: #c9444f;
+}
+
+/* Field layout */
+.ce-field {
+  margin-bottom: var(--ce-gap-field);
+}
+
+.ce-field label {
+  display: block;
+  margin-bottom: var(--ce-gap-label);
+  font-weight: 600;
+}
+
+.ce-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .ce-field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ce-group-break {
+  height: 1px;
+  background: var(--color-border-light-tertiary, #c9c7b8);
+  margin: var(--ce-gap-group) 0;
+}
+
+.ce-group--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ce-group__heading {
+  font-size: var(--font-size-13, 13px);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  opacity: 0.7;
+  margin: 0 0 var(--ce-gap-field);
+}
+
+.ce-lock {
+  opacity: 0.6;
+  font-size: 0.85em;
+}
+
+.ce-tooltip {
+  display: inline-block;
+  cursor: help;
+  opacity: 0.6;
+  margin-left: 4px;
+}
+
+.ce-tooltip:focus {
+  outline: 2px solid var(--color-cool-4, #7a9bb5);
+}
+
+/* Rich text fields */
+.ce-richtext .editor {
+  min-height: var(--ce-rt-min, 110px);
+}
+
+.ce-richtext .editor-content {
+  min-height: var(--ce-rt-min, 110px);
+  resize: vertical;
+  overflow: auto;
+}
+
+.ce-richtext--collapsed .editor-content {
+  max-height: 60px;
+}
+
+.ce-richtext--collapsed:focus-within .editor-content {
+  max-height: none;
+}
+
+/* NOTE: rich-text (ProseMirror) fields carry a `data-placeholder` attribute
+   on the `.ce-richtext` wrapper (set per-field in each template) with intent
+   to show it as an empty-state placeholder, matching spec §1.8's "every
+   rich-text field has a real, evocative placeholder" requirement. Left
+   unimplemented here: `content: attr(...)` only reads from the element the
+   pseudo-element itself is attached to, and `data-placeholder` lives on an
+   ancestor of the actual `.ProseMirror` node Foundry renders, not on it
+   directly — a correct fix needs either a CSS custom property (with its own
+   quoting/escaping hazard, several placeholders contain apostrophes) or a
+   small JS pass copying the attribute down after render. Flagged rather than
+   shipped half-working; the placeholder text is still present in the DOM via
+   the data attribute for a future fix to key off of. */
+
+/* Session-number composite (§1.6) */
+.ce-session-field__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ce-session-field__row input[type="number"] {
+  flex: 0 0 80px;
+}
+
+.ce-now-btn {
+  flex: 0 0 auto;
+}
+
+.ce-session-field__readout {
+  margin-left: auto;
+  font-size: var(--font-size-11, 11px);
+  opacity: 0.65;
+}
+
+/* Document drop slots (§1.7) */
+.ce-drop-slot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px dashed var(--color-border-light-tertiary, #c9c7b8);
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.ce-drop-slot__empty {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.ce-drop-slot__img {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.ce-drop-slot__name {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.ce-drop-slot__clear {
+  margin-left: auto;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+.ce-drop-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+  border-radius: 999px;
+}
+
+.ce-drop-chip img {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ce-drop-chip__remove {
+  cursor: pointer;
+  background: none;
+  border: none;
+  line-height: 1;
+}
+
+/* Range / legend (Thread pressure, Faction disposition) */
+.ce-field input[type="range"] {
+  width: 100%;
+}
+
+.ce-range-readout {
+  float: right;
+  font-weight: 600;
+}
+
+.ce-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--ce-gap-legend);
+  font-size: var(--font-size-11, 11px);
+  opacity: 0.65;
+}
+
+.ce-legend--disposition {
+  flex-wrap: wrap;
+}
+
+.ce-legend__tick--active {
+  opacity: 1;
+  font-weight: 700;
+}
+
+/* Segmented toggle (Clock direction) */
+.ce-segmented-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.ce-segmented-toggle label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0;
+  font-weight: normal;
+}
+
+/* Clock dial + stepper */
+.ce-clock-progress__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ce-dial__track {
+  fill: none;
+  stroke: var(--color-border-light-tertiary, #c9c7b8);
+  stroke-width: 8;
+}
+
+.ce-dial__fill {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform-origin: 50px 50px;
+  transform: rotate(-90deg);
+}
+
+.ce-dial__fill--doom {
+  stroke: #c9444f;
+}
+
+.ce-dial__fill--progress {
+  stroke: #4f9a52;
+}
+
+.ce-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ce-stepper__btn {
+  width: 28px;
+  height: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ce-stepper__filled {
+  font-weight: 700;
+  min-width: 1.2em;
+  text-align: center;
+}
+
+.ce-stepper__segments {
+  width: 48px;
+}
+
+/* Focus rings and motion (§1.8) */
+.ce-sheet button:focus-visible,
+.ce-sheet input:focus-visible,
+.ce-sheet select:focus-visible,
+.ce-sheet a:focus-visible {
+  outline: 2px solid var(--color-cool-4, #7a9bb5);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ce-chip,
+  .ce-legend__tick,
+  .ce-toggle-btn,
+  .ce-richtext .editor-content {
+    transition: none !important;
+  }
+}

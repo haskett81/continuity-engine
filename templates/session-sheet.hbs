@@ -1,0 +1,46 @@
+<div class="ce-sheet">
+  <header class="ce-sheet__header">
+    <input class="ce-name-input" type="text" name="name" value="{{name}}" placeholder="{{namePlaceholder}}" />
+    <div class="ce-sheet__header-row">
+      <div class="ce-chips">
+        {{#each chips}}<span class="ce-chip ce-chip--{{this.tone}}">{{this.text}}</span>{{/each}}
+      </div>
+      <button type="button" class="ce-gate ce-toggle-btn {{#if system.isCurrent}}ce-toggle-btn--active{{/if}}" data-action="setCurrent">
+        {{localize "CE.session.gate.label"}}
+      </button>
+    </div>
+  </header>
+
+  <div class="ce-sheet__body">
+    <div class="ce-field-row">
+      <div class="ce-field">
+        <label for="system.number">{{localize "CE.session.number.label"}}</label>
+        <input type="number" id="system.number" name="system.number" value="{{system.number}}" min="0" step="1" />
+      </div>
+      <div class="ce-field">
+        <label for="system.date">{{localize "CE.session.date.label"}}</label>
+        <input type="date" id="system.date" name="system.date" value="{{system.date}}" />
+      </div>
+    </div>
+
+    <div class="ce-group-break"></div>
+
+    {{> continuity-drop-list attendees}}
+
+    <div class="ce-group-break"></div>
+
+    <div class="ce-field ce-richtext" style="--ce-rt-min: 160px" data-placeholder="{{localize "CE.session.recap.placeholder"}}">
+      <label for="system.recap">{{localize "CE.session.recap.label"}}</label>
+      {{editor system.recap target="system.recap" button=true engine="prosemirror" collaborate=false editable=true}}
+    </div>
+
+    <div class="ce-field ce-richtext ce-richtext--collapsed" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.session.gmNotes.placeholder"}}">
+      <label for="system.gmNotes"><span class="ce-lock" aria-hidden="true">&#128274;</span> {{localize "CE.session.gmNotes.label"}}</label>
+      {{editor system.gmNotes target="system.gmNotes" button=true engine="prosemirror" collaborate=false editable=true}}
+    </div>
+  </div>
+
+  <footer class="ce-sheet__footer">
+    <span class="ce-current-session">{{localize "CE.session.number.label"}} {{system.number}}</span>
+  </footer>
+</div>

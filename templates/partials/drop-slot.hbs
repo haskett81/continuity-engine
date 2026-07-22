@@ -1,0 +1,12 @@
+<div class="ce-field ce-drop-slot-field">
+  <label>{{label}}</label>
+  <div class="ce-drop-slot" data-field="{{field}}">
+    {{#if doc}}
+      <img class="ce-drop-slot__img" src="{{doc.img}}" alt="" />
+      <a class="ce-drop-slot__name" data-action="openDoc" data-uuid="{{doc.uuid}}">{{doc.name}}</a>
+      <button type="button" class="ce-drop-slot__clear" data-action="clearDrop" aria-label="{{localize "CE.common.clear"}}">&times;</button>
+    {{else}}
+      <span class="ce-drop-slot__empty">{{emptyText}}</span>
+    {{/if}}
+  </div>
+</div>

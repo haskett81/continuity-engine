@@ -1,0 +1,27 @@
+<div class="ce-field ce-session-field">
+  <label for="{{name}}">
+    {{label}}
+    {{#if hint}}<span class="ce-tooltip" data-tooltip="{{hint}}" tabindex="0">&#9432;</span>{{/if}}
+  </label>
+  <div class="ce-session-field__row">
+    <input
+      type="number"
+      id="{{name}}"
+      name="{{name}}"
+      value="{{value}}"
+      placeholder="{{currentSession}}"
+      min="0"
+      step="1"
+      {{#if disabled}}disabled{{/if}}
+    />
+    <button
+      type="button"
+      class="ce-now-btn"
+      data-action="stampNow"
+      data-field="{{name}}"
+      data-tooltip="{{nowTooltip}}"
+      {{#if disabled}}disabled{{/if}}
+    >{{localize "CE.common.now"}}</button>
+    {{#if sessionsAgoText}}<span class="ce-session-field__readout">{{sessionsAgoText}}</span>{{/if}}
+  </div>
+</div>

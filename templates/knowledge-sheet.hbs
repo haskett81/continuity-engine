@@ -1,0 +1,50 @@
+<div class="ce-sheet">
+  <header class="ce-sheet__header">
+    <input class="ce-name-input" type="text" name="name" value="{{name}}" placeholder="{{localize "CE.knowledge.name.placeholder"}}" />
+    <div class="ce-sheet__header-row">
+      <div class="ce-chips">
+        {{#each chips}}<span class="ce-chip ce-chip--{{this.tone}}">{{this.text}}</span>{{/each}}
+      </div>
+      <label class="ce-gate">
+        <input type="checkbox" name="system.partyKnows" {{checked system.partyKnows}} />
+        {{localize "CE.knowledge.gate.label"}}
+      </label>
+    </div>
+  </header>
+
+  <div class="ce-sheet__body">
+    <div class="ce-field ce-richtext" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.knowledge.truth.placeholder"}}">
+      <label for="system.truth"><span class="ce-lock" aria-hidden="true">&#128274;</span> {{localize "CE.knowledge.truth.label"}}</label>
+      {{editor system.truth target="system.truth" button=true engine="prosemirror" collaborate=false editable=true}}
+    </div>
+
+    <div class="ce-field ce-richtext" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.knowledge.partyBelief.placeholder"}}">
+      <label for="system.partyBelief">{{localize "CE.knowledge.partyBelief.label"}}</label>
+      {{editor system.partyBelief target="system.partyBelief" button=true engine="prosemirror" collaborate=false editable=true}}
+    </div>
+
+    <div class="ce-group-break"></div>
+
+    <div class="ce-group {{#if groupDisabled}}ce-group--disabled{{/if}}">
+      <h3 class="ce-group__heading">{{localize "CE.knowledge.groupHeading"}}</h3>
+
+      {{> continuity-session-field revealedSession}}
+
+      <div class="ce-field">
+        <label for="system.source">{{localize "CE.knowledge.source.label"}}</label>
+        <input type="text" id="system.source" name="system.source" value="{{system.source}}" placeholder="{{localize "CE.knowledge.source.placeholder"}}" {{#if groupDisabled}}disabled{{/if}} />
+      </div>
+
+      <div class="ce-field">
+        <label for="system.reliability">{{localize "CE.knowledge.reliability.label"}}</label>
+        <select id="system.reliability" name="system.reliability" {{#if groupDisabled}}disabled{{/if}}>
+          {{selectOptions reliabilityChoices selected=system.reliability}}
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <footer class="ce-sheet__footer">
+    <span class="ce-current-session">{{localize "CE.common.currentSessionFooter" session=revealedSession.currentSession}}</span>
+  </footer>
+</div>

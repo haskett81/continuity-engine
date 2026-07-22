@@ -1,4 +1,4 @@
-export { ThreadModel } from "./thread.js";
+export { ThreadModel, onPreUpdateThreadPage } from "./thread.js";
 export { ClockModel } from "./clock.js";
 export { FactionModel } from "./faction.js";
 export { KnowledgeModel } from "./knowledge.js";

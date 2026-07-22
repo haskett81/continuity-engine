@@ -11,5 +11,221 @@
   },
   "CONTINUITY": {
     "SheetDefault": "Continuity Page"
+  },
+  "CE": {
+    "common": {
+      "now": "Now",
+      "stampTooltip": "Stamp current session ({session})",
+      "sessionsAgo": "{n} sessions ago",
+      "thisSession": "this session",
+      "nextSession": "next session",
+      "currentSessionFooter": "Current session: {session}",
+      "clear": "Clear",
+      "remove": "Remove",
+      "staleChip": "Stale — {n} sessions"
+    },
+    "typePicker": {
+      "continuityGroup": "Continuity Engine",
+      "foundryGroup": "Foundry"
+    },
+    "thread": {
+      "name": { "placeholder": "The Veiled Envoy" },
+      "gate": { "label": "Visible to players" },
+      "status": {
+        "label": "Current status of this campaign story thread",
+        "open": "Open",
+        "active": "Active",
+        "dormant": "Dormant",
+        "resolved": "Resolved"
+      },
+      "stakes": {
+        "label": "Stakes if nobody acts",
+        "placeholder": "The Envoy reaches the Garrison first and the Sprawl is sealed by winter."
+      },
+      "pressure": {
+        "label": "Thread pressure scale",
+        "band": {
+          "background": "Background",
+          "building": "Building",
+          "urgent": "Urgent",
+          "breaking": "Breaking"
+        }
+      },
+      "openedSession": {
+        "label": "Opened in session",
+        "hint": "The session this thread first appeared."
+      },
+      "lastTouchedSession": {
+        "label": "Last touched in session",
+        "hint": "The most recent session the party engaged this thread."
+      },
+      "resolvedSession": {
+        "label": "Resolved in session",
+        "hint": "The session this thread closed."
+      },
+      "resolution": {
+        "label": "Resolution",
+        "placeholder": "The party confronted the bailiff; the granary reopened, but the reeve's death was never truly resolved."
+      }
+    },
+    "faction": {
+      "name": {
+        "label": "Faction name",
+        "placeholder": "The Silver Hand"
+      },
+      "gate": { "label": "Known to players" },
+      "face": {
+        "label": "Faction face",
+        "empty": "Drag the NPC who speaks for this faction here."
+      },
+      "disposition": {
+        "label": "Disposition toward the party",
+        "band": {
+          "hated": "Hated",
+          "factionSchemes": "Faction Schemes",
+          "enemies": "Enemies",
+          "hostile": "Hostile",
+          "unfriendly": "Unfriendly",
+          "neutral": "Neutral",
+          "friendly": "Friendly",
+          "allied": "Allied",
+          "loyal": "Loyal",
+          "factionBoons": "Faction Boons",
+          "trusted": "Trusted"
+        }
+      },
+      "agenda": {
+        "label": "Agenda",
+        "placeholder": "Control the reliquary trade before the Church consolidates."
+      },
+      "currentMove": {
+        "label": "Current move between sessions",
+        "placeholder": "Buying silence from the dock wardens."
+      },
+      "lastContact": {
+        "label": "Last contact in session",
+        "hint": "The most recent session the party dealt with this faction."
+      }
+    },
+    "clock": {
+      "name": { "placeholder": "The Garrison seals the Sprawl" },
+      "gate": { "label": "Player view" },
+      "visibility": {
+        "hidden": "Hidden",
+        "vague": "Vague — band only",
+        "explicit": "Visible — exact count"
+      },
+      "direction": {
+        "label": "Direction",
+        "doom": "Doom — bad for the party",
+        "progress": "Progress — good for the party"
+      },
+      "progress": {
+        "label": "Progress",
+        "of": "of",
+        "decrease": "Decrease",
+        "increase": "Increase"
+      },
+      "trigger": {
+        "label": "When it fills — GM only",
+        "placeholder": "The bailiff controls the town's food; the party's leverage is gone."
+      },
+      "owner": {
+        "label": "Owned by",
+        "empty": "Drag a Faction or NPC page here."
+      },
+      "lastAdvancedSession": {
+        "label": "Last advanced in session",
+        "hint": "The most recent session this clock moved."
+      },
+      "chip": {
+        "filled": "Filled",
+        "nearlyFull": "One segment from filling",
+        "doom": "Doom",
+        "progress": "Progress",
+        "fraction": "{filled} / {segments}"
+      }
+    },
+    "beat": {
+      "name": { "placeholder": "The debt Leofwine never paid" },
+      "gate": { "label": "Visible to this player" },
+      "character": {
+        "label": "Character",
+        "empty": "Drag a player character here."
+      },
+      "hook": {
+        "label": "Unresolved hook",
+        "placeholder": "Aldric's brother Cael rides with the bailiff's men — a confrontation is overdue."
+      },
+      "stage": {
+        "label": "Stage",
+        "seeded": "Seeded — planted, not yet touched",
+        "surfaced": "Surfaced — the party has seen it",
+        "escalating": "Escalating — actively pressing",
+        "resolved": "Resolved — paid off"
+      },
+      "lastSpotlightSession": {
+        "label": "Last spotlight in session",
+        "hint": "The most recent session this character got a scene of their own."
+      },
+      "chip": {
+        "overdue": "Overdue — {n} sessions"
+      }
+    },
+    "session": {
+      "gate": { "label": "Set as current session" },
+      "namePlaceholder": "Session {number} — {date}",
+      "dateTbd": "date TBD",
+      "number": { "label": "Session number" },
+      "date": { "label": "Date played" },
+      "attendees": {
+        "label": "In attendance",
+        "empty": "Drag player characters here."
+      },
+      "recap": {
+        "label": "Recap — players can read this",
+        "placeholder": "What the party did, in their own terms."
+      },
+      "gmNotes": {
+        "label": "GM notes — private",
+        "placeholder": "What actually happened, and what it cost them."
+      },
+      "chip": {
+        "current": "Current session"
+      }
+    },
+    "knowledge": {
+      "name": { "placeholder": "Who ordered the mill burned" },
+      "gate": { "label": "The party knows this" },
+      "truth": {
+        "label": "Truth — GM only",
+        "placeholder": "The bailiff paid the arsonist himself."
+      },
+      "partyBelief": {
+        "label": "What the party believes",
+        "placeholder": "A drifter did it for coin."
+      },
+      "groupHeading": "What the party knows",
+      "revealedSession": {
+        "label": "Revealed in session",
+        "hint": "The session the party learned this."
+      },
+      "source": {
+        "label": "Source",
+        "placeholder": "The bailiff's testimony / a note in the mill / tavern gossip"
+      },
+      "reliability": {
+        "label": "Reliability",
+        "confirmed": "Confirmed",
+        "corroborated": "Corroborated",
+        "rumour": "Rumour",
+        "lie": "Lie"
+      },
+      "chip": {
+        "divergent": "Divergent",
+        "unknown": "Party doesn't know this",
+        "knownSince": "Known since session {session}"
+      }
+    }
   }
 }

@@ -1,0 +1,77 @@
+<div class="ce-sheet">
+  <header class="ce-sheet__header">
+    <input class="ce-name-input" type="text" name="name" value="{{name}}" placeholder="{{localize "CE.clock.name.placeholder"}}" />
+    <div class="ce-sheet__header-row">
+      <div class="ce-chips">
+        {{#each chips}}<span class="ce-chip ce-chip--{{this.tone}}">{{this.text}}</span>{{/each}}
+      </div>
+      <label class="ce-gate">
+        {{localize "CE.clock.gate.label"}}
+        <select name="system.visibility">
+          {{selectOptions
+            (object
+              hidden=(localize "CE.clock.visibility.hidden")
+              vague=(localize "CE.clock.visibility.vague")
+              explicit=(localize "CE.clock.visibility.explicit")
+            )
+            selected=system.visibility
+          }}
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <div class="ce-sheet__body">
+    <div class="ce-field">
+      <label>{{localize "CE.clock.direction.label"}}</label>
+      <div class="ce-segmented-toggle">
+        {{radioBoxes "system.direction"
+          (object
+            doom=(localize "CE.clock.direction.doom")
+            progress=(localize "CE.clock.direction.progress")
+          )
+          checked=system.direction
+        }}
+      </div>
+    </div>
+
+    <div class="ce-group-break"></div>
+
+    <div class="ce-field ce-clock-progress">
+      <label>{{localize "CE.clock.progress.label"}}</label>
+      <div class="ce-clock-progress__row">
+        <svg class="ce-dial" viewBox="0 0 100 100" width="48" height="48" aria-hidden="true">
+          <circle class="ce-dial__track" cx="50" cy="50" r="{{dial.radius}}" />
+          <circle
+            class="ce-dial__fill {{#if dial.doom}}ce-dial__fill--doom{{else}}ce-dial__fill--progress{{/if}}"
+            cx="50" cy="50" r="{{dial.radius}}"
+            stroke-dasharray="{{dial.circumference}}"
+            stroke-dashoffset="{{dial.dashOffset}}"
+          />
+        </svg>
+        <div class="ce-stepper">
+          <button type="button" class="ce-stepper__btn" data-action="adjustClock" data-delta="-1" aria-label="{{localize "CE.clock.progress.decrease"}}">&minus;</button>
+          <span class="ce-stepper__filled">{{system.filled}}</span>
+          <span>{{localize "CE.clock.progress.of"}}</span>
+          <input type="number" name="system.segments" value="{{system.segments}}" min="2" step="1" class="ce-stepper__segments" />
+          <button type="button" class="ce-stepper__btn" data-action="adjustClock" data-delta="1" aria-label="{{localize "CE.clock.progress.increase"}}">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ce-group-break"></div>
+
+    <div class="ce-field ce-richtext" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.clock.trigger.placeholder"}}">
+      <label for="system.trigger"><span class="ce-lock" aria-hidden="true">&#128274;</span> {{localize "CE.clock.trigger.label"}}</label>
+      {{editor system.trigger target="system.trigger" button=true engine="prosemirror" collaborate=false editable=true}}
+    </div>
+
+    {{> continuity-drop-slot owner}}
+
+    {{> continuity-session-field lastAdvancedSession}}
+  </div>
+
+  <footer class="ce-sheet__footer">
+    <span class="ce-current-session">{{localize "CE.common.currentSessionFooter" session=lastAdvancedSession.currentSession}}</span>
+  </footer>
+</div>

@@ -32,7 +32,8 @@
     "scripts/module.js"
   ],
   "styles": [
-    "styles/module.css"
+    "styles/module.css",
+    "styles/sheet.css"
   ],
   "languages": [
     {
