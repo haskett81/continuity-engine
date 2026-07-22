@@ -1,4 +1,4 @@
-<section class="ce-cockpit-tab ce-cockpit-board">
+<section class="tab ce-cockpit-tab ce-cockpit-board {{#if tabs.board.active}}active{{/if}}" data-tab="board" data-group="primary">
   <p class="ce-cockpit-session-line">{{localize "CE.common.currentSessionFooter" session=currentSession}}</p>
 
   {{#if nothingFlagged}}

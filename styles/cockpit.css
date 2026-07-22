@@ -10,13 +10,15 @@
   flex-direction: column;
 }
 
-/* Foundry's generic tab-navigation.hbs markup — styled generically since its
-   exact class names weren't hand-verified line-by-line, only confirmed
-   functionally (clicking a nav item with data-action="tab" switches
-   tabGroups correctly, live-tested during P2). If Foundry's own default
-   nav styling already covers this adequately, these rules are additive
-   polish, not load-bearing. */
-.continuity-engine.cockpit nav.tabs {
+/* Foundry's generic tab-navigation.hbs markup — verified live: it renders
+   `<nav class="sheet-tabs tabs" data-application-part="tabs"><a
+   data-action="tab" data-tab="..." data-group="primary" class="active">`
+   (icon + label inside each `<a>`), not a `.item` class. Each tab's own
+   content PART needs `class="tab"` + `data-tab`/`data-group` set explicitly
+   in its own template (see templates/cockpit/*.hbs) — that wiring is NOT
+   automatic from `static TABS` the way the nav itself is; Foundry's core
+   CSS hides non-`.active` `.tab` elements, confirmed live. */
+.continuity-engine.cockpit nav.sheet-tabs.tabs {
   flex: 0 0 auto;
   display: flex;
   gap: 4px;
@@ -25,14 +27,17 @@
   margin-bottom: var(--ce-gap-group);
 }
 
-.continuity-engine.cockpit nav.tabs .item {
+.continuity-engine.cockpit nav.sheet-tabs.tabs > a {
   padding: 4px 10px;
   cursor: pointer;
   border-radius: 4px 4px 0 0;
   opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.continuity-engine.cockpit nav.tabs .item.active {
+.continuity-engine.cockpit nav.sheet-tabs.tabs > a.active {
   opacity: 1;
   font-weight: 600;
   background: var(--color-bg-option, #e3e3e3);
