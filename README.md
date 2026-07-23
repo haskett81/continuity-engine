@@ -68,4 +68,8 @@ Clicking "Save" in the bottom right will save the new version, which means that 
 
 Does something, probably
 
+## License
+
+Continuity Engine's core is MIT-licensed (see `LICENSE`). Premium companion modules are separate products under their own proprietary license.
+
 ## Changelog
