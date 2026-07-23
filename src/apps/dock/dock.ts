@@ -81,7 +81,10 @@ function buildIcon(): HTMLElement {
   el.style.left = `${pos.left}px`;
   el.style.top = `${pos.top}px`;
   el.setAttribute("role", "button");
-  el.dataset.tooltip = i18n().localize(isGM ? "CE.cockpit.tab.board" : "CE.playerView.title");
+  // "Continuity Cockpit" matches the GM macro's own name and the Cockpit
+  // window's own (hardcoded, not localized) title; CE.playerView.title is
+  // the real lang key for the other side.
+  el.dataset.tooltip = isGM ? "Continuity Cockpit" : i18n().localize("CE.playerView.title");
 
   const icon = document.createElement("i");
   icon.className = "fa-solid fa-compass-drafting ce-dock__icon";
@@ -115,7 +118,15 @@ function bindDrag(el: HTMLElement): void {
     startY = event.clientY;
     originLeft = el.offsetLeft;
     originTop = el.offsetTop;
-    el.setPointerCapture(event.pointerId);
+    // Pointer capture keeps the drag tracking even if the cursor leaves the
+    // icon mid-drag. Best-effort: a capture failure must never block the
+    // actual drag/click logic below it — caught live, a synthetic pointer
+    // (as opposed to a real hardware one) can throw here.
+    try {
+      el.setPointerCapture(event.pointerId);
+    } catch {
+      /* capture unavailable for this pointer; dragging still works via bubbled events */
+    }
   });
 
   el.addEventListener("pointermove", (event) => {
@@ -131,7 +142,11 @@ function bindDrag(el: HTMLElement): void {
   el.addEventListener("pointerup", (event) => {
     if (!dragging) return;
     dragging = false;
-    el.releasePointerCapture(event.pointerId);
+    try {
+      el.releasePointerCapture(event.pointerId);
+    } catch {
+      /* nothing captured to release; not an error condition */
+    }
     if (moved) {
       void settings.set("continuity-engine", "dockPosition", { left: el.offsetLeft, top: el.offsetTop });
     } else {
