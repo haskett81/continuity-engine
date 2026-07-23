@@ -1,4 +1,5 @@
 import { getCurrentSession, setCurrentSession } from "../../state/session.js";
+import { beginSession, endSession, appendSessionEvent } from "../../state/session-lifecycle.js";
 import { openDocumentSheet } from "../../foundry-utils.js";
 import { prepareBoardContext } from "./tabs/board.js";
 import { prepareThreadsContext, type ThreadSortKey } from "./tabs/threads.js";
@@ -48,6 +49,9 @@ export class ContinuityCockpit extends AppBase {
       setLogCurrent: ContinuityCockpit.#onSetLogCurrent,
       sortThreads: ContinuityCockpit.#onSortThreads,
       openDoc: ContinuityCockpit.#onOpenDoc,
+      beginSession: ContinuityCockpit.#onBeginSession,
+      endSession: ContinuityCockpit.#onEndSession,
+      quickAddEvent: ContinuityCockpit.#onQuickAddEvent,
     },
   };
 
@@ -102,6 +106,23 @@ export class ContinuityCockpit extends AppBase {
   static #onOpenDoc(_event: PointerEvent, target: HTMLElement): void {
     const uuid = target.dataset.uuid;
     if (uuid) openDocumentSheet(uuid);
+  }
+
+  static #onBeginSession(this: ContinuityCockpit): void {
+    void beginSession().then(() => this.render());
+  }
+
+  static #onEndSession(this: ContinuityCockpit): void {
+    void endSession().then(() => this.render());
+  }
+
+  static #onQuickAddEvent(this: ContinuityCockpit, _event: PointerEvent, target: HTMLElement): void {
+    const input = this.element.querySelector<HTMLInputElement>("#ce-quick-add-input");
+    if (!input) return;
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = "";
+    void appendSessionEvent("manual", text, []).then(() => this.render());
   }
 
   async _prepareContext(options: object): Promise<Record<string, unknown>> {

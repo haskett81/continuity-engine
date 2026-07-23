@@ -27,5 +27,11 @@ export function prepareLogContext(): Record<string, unknown> {
     })
     .sort((a, b) => b.number - a.number);
 
-  return { sessions };
+  const current = sessions.find((s) => s.isCurrent);
+
+  return {
+    sessions,
+    hasCurrentSession: !!current,
+    currentSessionUuid: current?.uuid ?? null,
+  };
 }

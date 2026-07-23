@@ -38,6 +38,23 @@
       <label for="system.gmNotes"><span class="ce-lock" aria-hidden="true">&#128274;</span> {{localize "CE.session.gmNotes.label"}}</label>
       {{editor system.gmNotes target="system.gmNotes" button=true engine="prosemirror" collaborate=false editable=true}}
     </div>
+
+    {{#if events.length}}
+    <div class="ce-group-break"></div>
+
+    <div class="ce-field">
+      <label><span class="ce-lock" aria-hidden="true">&#128274;</span> {{localize "CE.session.events.heading"}}</label>
+      <ul class="ce-event-log">
+        {{#each events}}
+        <li class="ce-event-log__entry">
+          <span class="ce-event-log__time">{{this.time}}</span>
+          <span class="ce-chip ce-chip--neutral">{{this.kindLabel}}</span>
+          <span class="ce-event-log__text">{{this.text}}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
   </div>
 
   <footer class="ce-sheet__footer">

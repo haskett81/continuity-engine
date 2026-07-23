@@ -1,8 +1,26 @@
-import { pagesOfType } from "./pages.js";
+import { pagesOfType, type JournalPageLike } from "./pages.js";
 
 interface SessionSystemLike {
   number: number;
   isCurrent: boolean;
+}
+
+/**
+ * The current session's own page (not just its number) — needed by End
+ * Session (P3) to write threadsTouched/clocksAdvanced onto it. Same
+ * resolution order as getCurrentSession(): flagged page, else the
+ * page with the highest number, else null if no Session pages exist yet.
+ */
+export function getCurrentSessionPage(): JournalPageLike | null {
+  const sessionPages = pagesOfType("continuity-engine.session");
+  if (sessionPages.length === 0) return null;
+
+  const flagged = sessionPages.find((p) => (p.system as SessionSystemLike).isCurrent);
+  if (flagged) return flagged;
+
+  return sessionPages.reduce((highest, p) =>
+    (p.system as SessionSystemLike).number > (highest.system as SessionSystemLike).number ? p : highest,
+  );
 }
 
 /**

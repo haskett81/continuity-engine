@@ -2,6 +2,13 @@ import { ContinuityPageSheet, dropListContext } from "./base-sheet.js";
 import { type Chip } from "../ui/chips.js";
 import { i18n } from "../foundry-utils.js";
 
+interface EventEntry {
+  timestamp: string;
+  kind: string;
+  text: string;
+  refs: string[];
+}
+
 interface SessionSystemLike {
   number: number;
   date: string;
@@ -9,6 +16,7 @@ interface SessionSystemLike {
   attendees: string[];
   recap: string;
   gmNotes: string;
+  events: EventEntry[];
 }
 
 export class SessionSheet extends ContinuityPageSheet {
@@ -38,6 +46,13 @@ export class SessionSheet extends ContinuityPageSheet {
         emptyTextKey: "CE.session.attendees.empty",
         uuids: system.attendees,
       }),
+      events: (system.events ?? [])
+        .map((e) => ({
+          time: new Date(e.timestamp).toLocaleString(),
+          kindLabel: i18n().localize(`CE.session.events.kind.${e.kind}`),
+          text: e.text,
+        }))
+        .reverse(),
     };
   }
 }

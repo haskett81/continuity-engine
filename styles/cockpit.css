@@ -165,3 +165,20 @@
 .ce-cockpit-log-row {
   gap: 6px;
 }
+
+/* Log tab: session lifecycle controls (P3) */
+.ce-cockpit-log__header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: var(--ce-gap-field);
+}
+
+.ce-cockpit-log__quickadd {
+  display: flex;
+  gap: 8px;
+  margin-bottom: var(--ce-gap-field);
+}
+
+.ce-cockpit-log__quickadd input {
+  flex: 1 1 auto;
+}

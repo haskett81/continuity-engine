@@ -1,4 +1,18 @@
 <section class="tab ce-cockpit-tab ce-cockpit-log {{#if tabs.log.active}}active{{/if}}" data-tab="log" data-group="primary">
+  <div class="ce-cockpit-log__header">
+    <button type="button" data-action="beginSession">{{localize "CE.cockpit.log.beginSession"}}</button>
+    <button type="button" data-action="endSession" {{#unless hasCurrentSession}}disabled{{/unless}}>{{localize "CE.cockpit.log.endSession"}}</button>
+  </div>
+
+  {{#if hasCurrentSession}}
+  <div class="ce-cockpit-log__quickadd">
+    <input type="text" id="ce-quick-add-input" placeholder="{{localize "CE.cockpit.log.quickAddPlaceholder"}}" />
+    <button type="button" data-action="quickAddEvent" data-uuid="{{currentSessionUuid}}">{{localize "CE.cockpit.log.quickAdd"}}</button>
+  </div>
+  {{/if}}
+
+  <div class="ce-group-break"></div>
+
   {{#if sessions.length}}
   <ul class="ce-cockpit-list">
     {{#each sessions}}

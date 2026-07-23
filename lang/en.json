@@ -22,6 +22,7 @@
       "currentSessionFooter": "Current session: {session}",
       "clear": "Clear",
       "remove": "Remove",
+      "cancel": "Cancel",
       "staleChip": "Stale — {n} sessions"
     },
     "typePicker": {
@@ -74,7 +75,17 @@
       },
       "log": {
         "setCurrent": "Set current",
-        "empty": "No sessions logged yet."
+        "empty": "No sessions logged yet.",
+        "beginSession": "Begin Session",
+        "endSession": "End Session",
+        "quickAdd": "Add",
+        "quickAddPlaceholder": "Add an event…",
+        "endSessionDialog": {
+          "title": "End Session",
+          "threads": "Threads touched",
+          "clocks": "Clocks advanced",
+          "confirm": "Confirm"
+        }
       }
     },
     "thread": {
@@ -244,6 +255,15 @@
       "gmNotes": {
         "label": "GM notes — private",
         "placeholder": "What actually happened, and what it cost them."
+      },
+      "events": {
+        "heading": "Event log — GM only",
+        "kind": {
+          "scene": "Scene",
+          "combat-start": "Combat started",
+          "combat-end": "Combat ended",
+          "manual": "Note"
+        }
       },
       "chip": {
         "current": "Current session"
