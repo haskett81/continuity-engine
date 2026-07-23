@@ -2,7 +2,7 @@
   "id": "continuity-engine",
   "title": "Continuity",
   "description": "A persistent campaign-state layer for Foundry. Tracks what is true in the world, what the party believes, what is unresolved, and what is owed to each player character — across sessions, permanently, inside Foundry's own document system.",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "compatibility": {
     "minimum": "14",
     "verified": "14"
