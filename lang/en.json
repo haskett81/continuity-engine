@@ -88,6 +88,35 @@
         }
       }
     },
+    "playerView": {
+      "title": "Campaign Chronicle",
+      "subtitle": "Everything your GM has shared with the table. Updated after each session.",
+      "tab": {
+        "story": "The story so far",
+        "chasing": "What we're chasing",
+        "know": "What we know",
+        "met": "Who we've met",
+        "mine": "Your story"
+      },
+      "story": {
+        "empty": "Nothing here yet. Your GM decides what appears in this view. After your next session, check back."
+      },
+      "chasing": {
+        "empty": "Nothing here yet. Your GM decides what appears in this view. After your next session, check back."
+      },
+      "know": {
+        "empty": "Nothing here yet. Your GM decides what appears in this view. After your next session, check back.",
+        "learnedInSession": "Learned in session {n}",
+        "heardFrom": "Heard from: {source}"
+      },
+      "met": {
+        "empty": "Nothing here yet. Your GM decides what appears in this view. After your next session, check back."
+      },
+      "mine": {
+        "empty": "Nothing else has been shared with you alone.",
+        "onlyYou": "Only you can see this."
+      }
+    },
     "thread": {
       "name": { "placeholder": "The Veiled Envoy" },
       "gate": { "label": "Visible to players" },

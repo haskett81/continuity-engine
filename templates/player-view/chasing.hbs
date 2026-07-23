@@ -1,0 +1,34 @@
+<section class="tab ce-pv-tab" data-tab="chasing" data-group="primary">
+  {{#if chasingEmpty}}
+    <p class="ce-pv-empty">{{localize "CE.playerView.chasing.empty"}}</p>
+  {{else}}
+    {{#if clocks.length}}
+    <div class="ce-pv-clocks">
+      {{#each clocks}}
+      <div class="ce-pv-clock">
+        <svg class="ce-dial" viewBox="0 0 100 100" width="36" height="36" aria-hidden="true">
+          <circle class="ce-dial__track" cx="50" cy="50" r="{{this.dial.radius}}" />
+          <circle
+            class="ce-dial__fill {{#if this.doom}}ce-dial__fill--doom{{else}}ce-dial__fill--progress{{/if}}"
+            cx="50" cy="50" r="{{this.dial.radius}}"
+            stroke-dasharray="{{this.dial.circumference}}"
+            stroke-dashoffset="{{this.dial.dashOffset}}"
+          />
+        </svg>
+        <div>
+          <b>{{this.name}}</b>
+          <em>{{this.filled}} / {{this.segments}}</em>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    {{/if}}
+
+    {{#each threads}}
+    <article class="ce-pv-entry">
+      <h4>{{this.name}}<span class="ce-pv-when">{{this.statusLabel}}</span></h4>
+      <div class="ce-pv-richtext">{{{this.stakes}}}</div>
+    </article>
+    {{/each}}
+  {{/if}}
+</section>

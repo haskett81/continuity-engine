@@ -32,7 +32,8 @@
   ],
   "styles": [
     "styles/sheet.css",
-    "styles/cockpit.css"
+    "styles/cockpit.css",
+    "styles/player-view.css"
   ],
   "languages": [
     {

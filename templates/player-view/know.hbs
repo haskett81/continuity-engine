@@ -1,0 +1,14 @@
+<section class="tab ce-pv-tab" data-tab="know" data-group="primary">
+  {{#if knowEmpty}}
+    <p class="ce-pv-empty">{{localize "CE.playerView.know.empty"}}</p>
+  {{else}}
+    {{#each knowledge}}
+    <article class="ce-pv-entry">
+      <h4>{{this.name}}{{#if this.revealedSession}}<span class="ce-pv-when">{{localize "CE.playerView.know.learnedInSession" n=this.revealedSession}}</span>{{/if}}</h4>
+      <div class="ce-pv-richtext">{{{this.belief}}}</div>
+      {{#if this.source}}<div class="ce-pv-source">{{localize "CE.playerView.know.heardFrom" source=this.source}}</div>{{/if}}
+      <div class="ce-pv-tags"><span class="ce-chip ce-chip--{{this.confidenceTone}}">{{this.confidenceLabel}}</span></div>
+    </article>
+    {{/each}}
+  {{/if}}
+</section>

@@ -1,0 +1,12 @@
+<section class="tab ce-pv-tab" data-tab="story" data-group="primary">
+  {{#if storyEmpty}}
+    <p class="ce-pv-empty">{{localize "CE.playerView.story.empty"}}</p>
+  {{else}}
+    {{#each sessions}}
+    <article class="ce-pv-entry">
+      <h4>{{this.name}}{{#if this.date}}<span class="ce-pv-when">{{this.date}}</span>{{/if}}</h4>
+      <div class="ce-pv-richtext">{{{this.recap}}}</div>
+    </article>
+    {{/each}}
+  {{/if}}
+</section>

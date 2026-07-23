@@ -1,0 +1,12 @@
+<section class="tab ce-pv-tab" data-tab="met" data-group="primary">
+  {{#if metEmpty}}
+    <p class="ce-pv-empty">{{localize "CE.playerView.met.empty"}}</p>
+  {{else}}
+    {{#each factions}}
+    <article class="ce-pv-entry">
+      <h4>{{this.name}}<span class="ce-pv-when"><span class="ce-chip ce-chip--{{this.standingTone}}">{{this.standingLabel}}</span></span></h4>
+      <div class="ce-pv-richtext">{{{this.currentMove}}}</div>
+    </article>
+    {{/each}}
+  {{/if}}
+</section>
