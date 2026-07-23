@@ -1,6 +1,6 @@
 {
   "name": "continuity-engine",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Persistent campaign-state layer for FoundryVTT: threads, clocks, factions, knowledge, and personal-quest debt tracked across sessions.",
   "type": "module",
   "private": true,
