@@ -14,6 +14,8 @@ import { registerCockpitEntryPoint } from "./apps/cockpit/register.js";
 import { registerTypePickerGrouping } from "./apps/type-picker.js";
 import { registerSessionTracker } from "./state/session-tracker.js";
 import { registerStructuralMarkers } from "./apps/structural-markers.js";
+import { registerGmOnlyEnforcement } from "./state/gm-only.js";
+import { registerPublishSync } from "./state/publish.js";
 
 Hooks.once("init", async () => {
   Object.assign(CONFIG.JournalEntryPage.dataModels, {
@@ -38,6 +40,8 @@ Hooks.once("init", async () => {
   registerTypePickerGrouping();
   registerSessionTracker();
   registerStructuralMarkers();
+  registerGmOnlyEnforcement();
+  registerPublishSync();
 
   // foundry-vtt-types' preUpdateJournalEntryPage overload requires the real
   // (very large) JournalEntryPage system union type; onPreUpdateThreadPage
