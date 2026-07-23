@@ -4,15 +4,17 @@
 // Session's recap-vs-event-log tension exposed). The rule this exists to
 // hold: no GM-only field ever exists on a document a player has permission to
 // read. So the GM's source page never becomes player-readable, ever — instead,
-// ticking "Player Visible" writes a separate, sanitized copy into its own
-// journal, re-synced every time the source saves. Only the copy is ever
-// player-readable, and only the copy's own (type-specific) safe field subset
-// exists on it.
+// a per-type publish gate (see `shouldPublish`) writes a separate, sanitized
+// copy into its own journal, re-synced every time the source saves. Only the
+// copy is ever player-readable, and only the copy's own (type-specific) safe
+// field subset exists on it — never the raw values behind a "vague" or
+// "GM-only" label, even in the copy's own unrendered data.
 //
-// Beat is the first (and, as of this writing, only) type wired all the way
-// through — proven end-to-end live before the other five get the same
-// treatment, per this project's established practice of not building all six
-// at once on an unproven pattern.
+// Beat was proven end-to-end live first, alone, before any other type — see
+// git history. All six are wired now, on that proven pattern.
+import { stripHtml } from "../ui/text.js";
+import { clockStatus, clockBand } from "../derive/clock.js";
+
 const PUBLISHED_JOURNAL_NAME = "Continuity — Published";
 const FLAG_SCOPE = "continuity-engine";
 
@@ -66,26 +68,128 @@ interface BeatSystemLike {
   playerVisible: boolean;
 }
 
+interface ThreadSystemLike {
+  status: string;
+  stakes: string;
+  playerVisible: boolean;
+}
+
+interface FactionSystemLike {
+  dispositionBand: string;
+  currentMove: string;
+  playerVisible: boolean;
+}
+
+interface ClockSystemLike {
+  filled: number;
+  segments: number;
+  direction: string;
+  visibility: string;
+}
+
+interface KnowledgeSystemLike {
+  partyBelief: string;
+  source: string;
+  revealedSession: number | null;
+  reliability: string;
+  partyKnows: boolean;
+}
+
+interface SessionSystemLike {
+  recap: string;
+}
+
+/** A `lie` never publishes as "lie" — it appears to the party exactly as they believe it: an ordinary unconfirmed rumour, not a flagged falsehood. */
+function publishedConfidence(reliability: string): string {
+  return reliability === "lie" ? "rumour" : reliability;
+}
+
+/**
+ * Synthetic 4-segment fraction for a `vague` clock — encodes the correct
+ * band and nothing more. The real `filled`/`segments` never touch the copy;
+ * a player inspecting the copy's raw data, not just the rendered UI, still
+ * can't recover the true count.
+ */
+const VAGUE_BAND_STEP: Record<string, number> = { justStarting: 1, building: 2, nearlyThere: 3, complete: 4 };
+
 /**
  * Type-specific safe-field subsets. Only what's listed here ever reaches a
- * player's client. Beat deliberately omits `stage`/`lastServedSession`/
- * `debt` — GM pacing mechanics, not something spec or the design book's
- * "Mine" tab ever shows a player.
+ * player's client — never the raw source values for anything not listed.
  */
 function sanitize(type: string, system: Record<string, unknown>): Record<string, unknown> | null {
-  if (type === "continuity-engine.beat") {
-    const s = system as unknown as BeatSystemLike;
-    return { actor: s.actor, hook: s.hook };
+  switch (type) {
+    case "continuity-engine.beat": {
+      const s = system as unknown as BeatSystemLike;
+      return { actor: s.actor, hook: s.hook };
+    }
+    case "continuity-engine.thread": {
+      const s = system as unknown as ThreadSystemLike;
+      return { status: s.status, stakes: s.stakes };
+    }
+    case "continuity-engine.faction": {
+      const s = system as unknown as FactionSystemLike;
+      // dispositionBand only — never the raw -100..100 number (design
+      // book: "no disposition figures on factions ... standing in words").
+      return { dispositionBand: s.dispositionBand, currentMove: s.currentMove };
+    }
+    case "continuity-engine.clock": {
+      const s = system as unknown as ClockSystemLike;
+      if (s.visibility === "explicit") {
+        return { filled: s.filled, segments: s.segments, direction: s.direction, visibility: s.visibility };
+      }
+      // vague: publish a synthetic fraction that renders the right band,
+      // never the real filled/segments.
+      const { percent } = clockStatus(s.filled, s.segments);
+      const step = VAGUE_BAND_STEP[clockBand(percent)] ?? 1;
+      return { filled: step, segments: 4, direction: s.direction, visibility: s.visibility };
+    }
+    case "continuity-engine.knowledge": {
+      const s = system as unknown as KnowledgeSystemLike;
+      return {
+        partyBelief: s.partyBelief,
+        source: s.source,
+        revealedSession: s.revealedSession,
+        reliability: publishedConfidence(s.reliability),
+      };
+    }
+    case "continuity-engine.session": {
+      const s = system as unknown as SessionSystemLike;
+      return { recap: s.recap };
+    }
+    default:
+      return null;
   }
-  return null;
 }
 
 function shouldPublish(type: string, system: Record<string, unknown>): boolean {
-  if (type === "continuity-engine.beat") {
-    const s = system as unknown as BeatSystemLike;
-    return s.playerVisible && !!s.actor;
+  switch (type) {
+    case "continuity-engine.beat": {
+      const s = system as unknown as BeatSystemLike;
+      return s.playerVisible && !!s.actor;
+    }
+    case "continuity-engine.thread": {
+      const s = system as unknown as ThreadSystemLike;
+      return s.playerVisible;
+    }
+    case "continuity-engine.faction": {
+      const s = system as unknown as FactionSystemLike;
+      return s.playerVisible;
+    }
+    case "continuity-engine.clock": {
+      const s = system as unknown as ClockSystemLike;
+      return s.visibility !== "hidden";
+    }
+    case "continuity-engine.knowledge": {
+      const s = system as unknown as KnowledgeSystemLike;
+      return s.partyKnows;
+    }
+    case "continuity-engine.session": {
+      const s = system as unknown as SessionSystemLike;
+      return stripHtml(s.recap ?? "").trim().length > 0;
+    }
+    default:
+      return false;
   }
-  return false;
 }
 
 /** Beat's "only you can see this" (design book P4/Mine): resolve which non-GM user(s) actually own the linked PC. */
@@ -100,26 +204,24 @@ async function resolveOwnerUserIds(actorUuid: string): Promise<string[]> {
     .map((u) => u.id);
 }
 
-/** Per-type ownership shape for a freshly-published copy, beyond the shared `default: NONE` baseline. */
+/**
+ * Per-type ownership shape for a freshly-published copy, beyond the shared
+ * `default: NONE` baseline. Beat is the one personal type — everything else
+ * is party-wide (`default: OBSERVER`, every player, no per-user narrowing).
+ */
 async function ownershipFor(type: string, system: Record<string, unknown>): Promise<Record<string, number>> {
-  const ownership: Record<string, number> = { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE };
-
   if (type === "continuity-engine.beat") {
+    const ownership: Record<string, number> = { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE };
     const s = system as unknown as BeatSystemLike;
     const ownerIds = await resolveOwnerUserIds(s.actor);
     for (const id of ownerIds) ownership[id] = CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER;
+    return ownership;
   }
-  // Other five types (once wired): default: OBSERVER for all players, no
-  // per-user narrowing — only Beat is personal.
 
-  return ownership;
+  return { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER };
 }
 
-/**
- * Runs on every save of a source page. No-op for types not yet in
- * `sanitize()`'s table — that's how "prove it on Beat first" stays true in
- * code, not just in sequencing.
- */
+/** Runs on every save of a source page. No-op for anything `sanitize()` doesn't recognize. */
 export async function syncPublishedCopy(source: SourcePageLike): Promise<void> {
   const sanitized = sanitize(source.type, source.system);
   if (sanitized === null) return;
