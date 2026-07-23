@@ -1,12 +1,13 @@
 name: CI
 
-# Runs on every push and pull request to main. Catches a broken build
-# before you ever tag a release. No secrets, no publishing — just a green/red light.
+# Runs on every push and pull request to master (this repo's default branch).
+# Catches a broken build before you ever tag a release. No secrets, no
+# publishing — just a green/red light.
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   build:
