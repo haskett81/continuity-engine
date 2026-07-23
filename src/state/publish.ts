@@ -14,6 +14,7 @@
 // git history. All six are wired now, on that proven pattern.
 import { stripHtml } from "../ui/text.js";
 import { clockStatus, clockBand } from "../derive/clock.js";
+import { representativeDisposition } from "../derive/disposition.js";
 
 const PUBLISHED_JOURNAL_NAME = "Continuity — Published";
 const FLAG_SCOPE = "continuity-engine";
@@ -75,7 +76,7 @@ interface ThreadSystemLike {
 }
 
 interface FactionSystemLike {
-  dispositionBand: string;
+  disposition: number;
   currentMove: string;
   playerVisible: boolean;
 }
@@ -128,9 +129,13 @@ function sanitize(type: string, system: Record<string, unknown>): Record<string,
     }
     case "continuity-engine.faction": {
       const s = system as unknown as FactionSystemLike;
-      // dispositionBand only — never the raw -100..100 number (design
-      // book: "no disposition figures on factions ... standing in words").
-      return { dispositionBand: s.dispositionBand, currentMove: s.currentMove };
+      // `dispositionBand` is a derived field, not schema — can't be set
+      // directly on a copy. Publish a representative `disposition` instead
+      // (the band's own boundary value); the copy's own prepareDerivedData
+      // re-derives the identical band from it. Never the true number —
+      // design book: "no disposition figures on factions ... standing in
+      // words" — same reasoning as Thread's pressure omission.
+      return { disposition: representativeDisposition(s.disposition), currentMove: s.currentMove };
     }
     case "continuity-engine.clock": {
       const s = system as unknown as ClockSystemLike;
