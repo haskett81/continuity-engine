@@ -28,7 +28,7 @@ interface PreUpdateDocLike {
 }
 
 interface OwnershipChangesLike {
-  ownership?: { default?: number };
+  ownership?: { default?: number; [userId: string]: number | undefined };
 }
 
 export function registerGmOnlyEnforcement(): void {
@@ -41,15 +41,18 @@ export function registerGmOnlyEnforcement(): void {
     }) as (...args: unknown[]) => unknown,
   );
 
+  // Unconditional, on every save — not just saves that happen to touch
+  // ownership. A page created before this code existed (ownership.default
+  // still -1/INHERIT from Foundry's own default) only gets explicitly
+  // stamped NONE the first time *something* updates it otherwise; asserting
+  // this on every update is what actually makes "always" true rather than
+  // "true once someone remembers to check."
   (Hooks.on as (name: string, fn: (...args: unknown[]) => unknown) => unknown)(
     "preUpdateJournalEntryPage",
     ((doc: PreUpdateDocLike, changes: OwnershipChangesLike) => {
       if (!CONTINUITY_TYPES.has(doc.type)) return;
       if (doc.getFlag("continuity-engine", "isPublishedCopy")) return;
-      if (changes.ownership?.default === undefined) return;
-      if (changes.ownership.default !== CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE) {
-        changes.ownership.default = CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE;
-      }
+      changes.ownership = { ...changes.ownership, default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE };
     }) as (...args: unknown[]) => unknown,
   );
 }
