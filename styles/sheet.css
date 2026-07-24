@@ -474,7 +474,7 @@
 }
 
 .ce-name-input {
-  font-family: var(--ce-serif);
+  font-family: var(--ce-serif) !important;
   font-size: 22px;
   font-weight: 600;
   color: var(--ce-ink);
@@ -520,7 +520,11 @@
 .ce-sheet input[type="date"],
 .ce-sheet select,
 .ce-sheet textarea {
-  font-family: var(--ce-sans);
+  /* !important: Foundry loads all module CSS inside `@layer(modules)`;
+     its own core input/select/textarea font-family reset is unlayered and
+     wins regardless of selector specificity. Confirmed live — background/
+     border/color all cascade normally, only font-family needs this. */
+  font-family: var(--ce-sans) !important;
   color: var(--ce-ink);
   background: var(--ce-field);
   border: 1px solid var(--ce-field-line);
