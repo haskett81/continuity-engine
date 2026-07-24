@@ -1,4 +1,4 @@
-import { ContinuityPageSheet, dropListContext } from "./base-sheet.js";
+import { ContinuityPageSheet, dropListContext, richTextInputContext } from "./base-sheet.js";
 import { type Chip } from "../ui/chips.js";
 import { i18n } from "../foundry-utils.js";
 
@@ -53,6 +53,18 @@ export class SessionSheet extends ContinuityPageSheet {
           text: e.text,
         }))
         .reverse(),
+      recapInput: await richTextInputContext({
+        document: this.document,
+        field: "recap",
+        value: system.recap,
+        placeholderKey: "CE.session.recap.placeholder",
+      }),
+      gmNotesInput: await richTextInputContext({
+        document: this.document,
+        field: "gmNotes",
+        value: system.gmNotes,
+        placeholderKey: "CE.session.gmNotes.placeholder",
+      }),
     };
   }
 }

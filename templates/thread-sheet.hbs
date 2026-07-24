@@ -24,7 +24,7 @@
 
     <div class="ce-field ce-richtext" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.thread.stakes.placeholder"}}">
       <label for="system.stakes">{{localize "CE.thread.stakes.label"}}</label>
-      {{editor system.stakes target="system.stakes" button=true engine="prosemirror" collaborate=false editable=true}}
+      {{{stakesInput}}}
     </div>
 
     <div class="ce-field">
@@ -48,7 +48,7 @@
 
     <div class="ce-field ce-richtext {{#if resolvedDisabled}}ce-richtext--collapsed{{/if}}" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.thread.resolution.placeholder"}}">
       <label for="system.resolution">{{localize "CE.thread.resolution.label"}}</label>
-      {{editor system.resolution target="system.resolution" button=true engine="prosemirror" collaborate=false editable=true}}
+      {{{resolutionInput}}}
     </div>
   </div>
 

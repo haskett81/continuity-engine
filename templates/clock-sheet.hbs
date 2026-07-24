@@ -63,7 +63,7 @@
 
     <div class="ce-field ce-richtext" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.clock.trigger.placeholder"}}">
       <label for="system.trigger"><span class="ce-lock" aria-hidden="true">&#128274;</span> {{localize "CE.clock.trigger.label"}}</label>
-      {{editor system.trigger target="system.trigger" button=true engine="prosemirror" collaborate=false editable=true}}
+      {{{triggerInput}}}
     </div>
 
     {{> continuity-drop-slot owner}}

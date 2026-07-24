@@ -1,4 +1,4 @@
-import { ContinuityPageSheet, sessionFieldContext } from "./base-sheet.js";
+import { ContinuityPageSheet, sessionFieldContext, richTextInputContext } from "./base-sheet.js";
 import { divergentChip, type Chip } from "../ui/chips.js";
 import { i18n } from "../foundry-utils.js";
 
@@ -49,6 +49,18 @@ export class KnowledgeSheet extends ContinuityPageSheet {
         hintKey: "CE.knowledge.revealedSession.hint",
         value: system.revealedSession,
         disabled: !system.partyKnows,
+      }),
+      truthInput: await richTextInputContext({
+        document: this.document,
+        field: "truth",
+        value: system.truth,
+        placeholderKey: "CE.knowledge.truth.placeholder",
+      }),
+      partyBeliefInput: await richTextInputContext({
+        document: this.document,
+        field: "partyBelief",
+        value: system.partyBelief,
+        placeholderKey: "CE.knowledge.partyBelief.placeholder",
       }),
     };
   }

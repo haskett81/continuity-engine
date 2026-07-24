@@ -76,6 +76,39 @@ export function sessionFieldContext(opts: {
   };
 }
 
+interface SchemaFieldLike {
+  getField: (path: string) => { toInput: (config: Record<string, unknown>) => HTMLElement | HTMLCollection };
+}
+
+/**
+ * Renders an `HTMLField` as a real, working `<prose-mirror>` input.
+ *
+ * Live-verified in the v14.363 target world: the `{{editor button=true}}`
+ * Handlebars helper still emits `.editor`/`.editor-edit` markup, but nothing
+ * in ApplicationV2 wires that button's click to actually open an editor —
+ * the classic FormApplication-era auto-activation this markup depended on
+ * doesn't exist here, so every rich-text field's "edit" button was silently
+ * inert. The field's own `toInput()` (Foundry's actual current API for this)
+ * returns a self-contained, form-associated `<prose-mirror>` custom element
+ * that participates in this module's existing `submitOnChange` form handler
+ * automatically — no separate save wiring needed. `toggled: true` keeps the
+ * existing read-view-then-edit-button UX; the read view's inner div is still
+ * `.editor-content`, so none of the sheet's existing CSS needed to change.
+ */
+export async function richTextInputContext(opts: {
+  document: JournalEntryPage;
+  field: string;
+  value: string;
+  placeholderKey: string;
+}): Promise<string> {
+  const schema = (opts.document as unknown as { system: { schema: SchemaFieldLike } }).system.schema;
+  const fieldDef = schema.getField(opts.field);
+  const source = opts.value?.trim() ? opts.value : `<p><em>${i18n().localize(opts.placeholderKey)}</em></p>`;
+  const enriched = (await foundry.applications.ux.TextEditor.implementation.enrichHTML(source, {})) as string;
+  const el = fieldDef.toInput({ name: `system.${opts.field}`, value: opts.value, toggled: true, enriched });
+  return (el as HTMLElement).outerHTML;
+}
+
 async function resolveDoc(uuid: string): Promise<ResolvedDoc | null> {
   if (!uuid) return null;
   const doc = (await fromUuid(uuid)) as { name?: string; img?: string } | null;
