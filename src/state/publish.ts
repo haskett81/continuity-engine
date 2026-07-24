@@ -266,10 +266,31 @@ export async function syncPublishedCopy(source: SourcePageLike): Promise<void> {
   await source.setFlag(FLAG_SCOPE, "publishedUuid", created.uuid);
 }
 
+/**
+ * Deleting a source page (as opposed to unchecking its publish flag, which
+ * `syncPublishedCopy` already handles) never fired any sync logic at all —
+ * found live, three real orphaned copies sitting in "Continuity — Published"
+ * with no source, one of them (a Faction) actively misrepresenting current
+ * state to players since a fresh, intentionally-unpublished replacement page
+ * now exists under the same name. `publishedUuid`/`sourceUuid` are the same
+ * two flags `syncPublishedCopy` already relies on to link a pair either way.
+ */
+async function deletePublishedCopyFor(deletedPage: SourcePageLike): Promise<void> {
+  const existingUuid = deletedPage.getFlag(FLAG_SCOPE, "publishedUuid") as string | undefined;
+  if (!existingUuid) return;
+  const existing = (await fromUuid(existingUuid)) as CopyPageLike | null;
+  if (existing) await existing.delete();
+}
+
 export function registerPublishSync(): void {
   const handler = (page: SourcePageLike) => {
     if (page.getFlag(FLAG_SCOPE, "isPublishedCopy")) return; // never re-sync a copy off its own save
     void syncPublishedCopy(page);
+  };
+
+  const deleteHandler = (page: SourcePageLike) => {
+    if (page.getFlag(FLAG_SCOPE, "isPublishedCopy")) return; // the copy itself being deleted needs no further action
+    void deletePublishedCopyFor(page);
   };
 
   (Hooks.on as (name: string, fn: (...args: unknown[]) => unknown) => unknown)(
@@ -279,5 +300,9 @@ export function registerPublishSync(): void {
   (Hooks.on as (name: string, fn: (...args: unknown[]) => unknown) => unknown)(
     "createJournalEntryPage",
     handler as (...args: unknown[]) => unknown,
+  );
+  (Hooks.on as (name: string, fn: (...args: unknown[]) => unknown) => unknown)(
+    "deleteJournalEntryPage",
+    deleteHandler as (...args: unknown[]) => unknown,
   );
 }
