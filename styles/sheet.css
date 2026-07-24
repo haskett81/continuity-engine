@@ -473,7 +473,11 @@
   color: var(--ce-ink-3);
 }
 
-.ce-name-input {
+/* input[type="text"].ce-name-input: specificity must clear the general
+   `.ce-sheet input[type="text"]...` rule above (also matches this element,
+   same layer, same !important) — a plain `.ce-name-input` class selector
+   loses that specificity fight. Confirmed live. */
+.ce-sheet input[type="text"].ce-name-input {
   font-family: var(--ce-serif) !important;
   font-size: 22px;
   font-weight: 600;
