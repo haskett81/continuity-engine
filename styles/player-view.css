@@ -205,23 +205,18 @@
 .ce-dock {
   position: absolute;
   z-index: 60;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--ce-c-1, #131317);
-  border: 2px solid var(--ce-brass, #b8913f);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: grab;
   touch-action: none;
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.6);
   user-select: none;
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  filter: drop-shadow(0 3px 9px rgba(0, 0, 0, 0.7));
+  transition: filter 0.15s ease;
 }
 
+/* The mark SVG already carries its own ring + filled plate (see src/mark.ts)
+   — no separate circular background here, matching the design book's own
+   dock icon, which is just the mark plus a hover glow. */
 .ce-dock:hover {
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.6), 0 0 0 4px rgba(184, 145, 63, 0.16);
+  filter: drop-shadow(0 0 10px rgba(184, 145, 63, 0.5)) drop-shadow(0 3px 9px rgba(0, 0, 0, 0.7));
 }
 
 .ce-dock:active {
@@ -229,8 +224,9 @@
 }
 
 .ce-dock__icon {
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  height: 100%;
+  display: block;
   pointer-events: none;
 }
 
@@ -251,4 +247,81 @@
   justify-content: center;
   border: 2px solid var(--ce-c-0, #0b0b0d);
   pointer-events: none;
+}
+
+/* Corner resize grip — scales with the icon (see applyPositionAndSize in
+   dock.ts), floored so it stays a usable hit target at the smallest icon
+   size instead of shrinking to a sliver. */
+.ce-dock__grip {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 2px;
+  cursor: nwse-resize;
+  background: var(--ce-brass, #b8913f);
+  border: 1.5px solid var(--ce-c-0, #0b0b0d);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.ce-dock:hover .ce-dock__grip,
+.ce-dock:focus-within .ce-dock__grip {
+  opacity: 1;
+}
+
+/* Right-click context menu */
+.ce-dock-menu {
+  position: absolute;
+  z-index: 70;
+  min-width: 200px;
+  background: var(--ce-c-1, #131317);
+  border: 1px solid var(--ce-c-line, #31313a);
+  border-radius: 4px;
+  padding: 4px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.7);
+  font-family: var(--ce-sans);
+}
+
+.ce-dock-menu__item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #cfc9b6;
+  cursor: pointer;
+  font-family: var(--ce-sans);
+  font-size: 12.5px;
+  padding: 6px 9px;
+  border-radius: 3px;
+}
+
+.ce-dock-menu__item:hover:not(:disabled) {
+  background: var(--ce-accent, #6d2a2a);
+  color: #fff;
+}
+
+.ce-dock-menu__item:focus-visible {
+  outline: 2px solid var(--ce-brass, #b8913f);
+  outline-offset: -2px;
+  background: var(--ce-c-2, #1a1a1f);
+}
+
+.ce-dock-menu__item:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ce-dock-menu__item--checked {
+  color: var(--ce-brass, #b8913f);
+}
+
+.ce-dock-menu__item--checked::before {
+  content: "✓ ";
+}
+
+.ce-dock-menu__separator {
+  border: none;
+  border-top: 1px solid var(--ce-c-line, #31313a);
+  margin: 4px 2px;
 }

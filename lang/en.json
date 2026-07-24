@@ -88,6 +88,22 @@
         }
       }
     },
+    "dock": {
+      "hiddenNotice": "Icon hidden. Restore it in Module Settings.",
+      "menu": {
+        "openCockpit": "Open the Cockpit Board",
+        "playerPreview": "See what my players see",
+        "openChronicle": "Open the Chronicle",
+        "sizeSmall": "Small",
+        "sizeMedium": "Medium",
+        "sizeLarge": "Large",
+        "lockPosition": "Lock position",
+        "resetSizePosition": "Reset size and position",
+        "howToUse": "How to use Continuity Engine",
+        "moduleSettings": "Module settings",
+        "hideIcon": "Hide icon"
+      }
+    },
     "playerView": {
       "title": "Campaign Chronicle",
       "subtitle": "Everything your GM has shared with the table. Updated after each session.",

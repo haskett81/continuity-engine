@@ -66,7 +66,24 @@ Clicking "Save" in the bottom right will save the new version, which means that 
 
 # FoundryVTT Module
 
-Does something, probably
+Continuity Engine is a persistent campaign-state layer for FoundryVTT. It tracks what is true in the world, what the party believes, what is unresolved, and what is owed to each player character — across sessions, permanently, inside Foundry's own document system.
+
+## Getting Started
+
+After installing and enabling the module, look for its dock icon — a small gear-and-die mark floating over the canvas. Left-click opens the Cockpit if you're the GM, or your Campaign Chronicle (the player-facing view) if you're not. Right-click it for a menu: resize, lock its position, or hide it (Module Settings brings it back if you do).
+
+The Cockpit's six page types, each its own journal page:
+
+- **Thread** — an ongoing story line and its current pressure.
+- **Faction** — a group, its disposition toward the party, and what it's doing between sessions.
+- **Clock** — a countdown or progress tracker, visible to players as exact, vague, or hidden.
+- **Knowledge** — the gap between what's actually true and what the party believes.
+- **Beat** — a personal-quest thread owed to one specific player character.
+- **Session** — the log the Cockpit's Begin/End Session controls write to.
+
+All six stay GM-only by construction; a per-sheet "visible to players" flag publishes a sanitized copy into a separate journal, which is all the Campaign Chronicle ever reads.
+
+A fuller in-app help hub is planned but not yet built — this section is the short version until then.
 
 ## License
 
