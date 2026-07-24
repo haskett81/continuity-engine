@@ -18,6 +18,7 @@ import { registerGmOnlyEnforcement } from "./state/gm-only.js";
 import { registerPublishSync } from "./state/publish.js";
 import { registerDockIcon, registerDockSettings } from "./apps/dock/dock.js";
 import { registerSceneControlEntry } from "./apps/scene-controls.js";
+import { registerExportEntryPoint } from "./apps/export-entry.js";
 
 Hooks.once("init", async () => {
   Object.assign(CONFIG.JournalEntryPage.dataModels, {
@@ -47,6 +48,7 @@ Hooks.once("init", async () => {
   registerDockSettings();
   registerDockIcon();
   registerSceneControlEntry();
+  registerExportEntryPoint();
 
   // foundry-vtt-types' preUpdateJournalEntryPage overload requires the real
   // (very large) JournalEntryPage system union type; onPreUpdateThreadPage
