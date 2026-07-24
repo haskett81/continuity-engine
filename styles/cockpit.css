@@ -269,3 +269,12 @@
 .ce-cockpit-slider label {
   color: var(--ce-ink-2);
 }
+
+.ce-cockpit-slider input[type="range"] {
+  accent-color: var(--ce-accent);
+}
+
+.ce-cockpit-table th {
+  color: var(--ce-ink-3);
+  font-weight: 600;
+}

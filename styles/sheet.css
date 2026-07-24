@@ -637,6 +637,54 @@
   color: var(--ce-ink-3);
 }
 
+.ce-drop-slot {
+  border-color: var(--ce-field-line);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.ce-drop-slot__empty {
+  color: #8f866e;
+}
+
+.ce-drop-chip {
+  background: var(--ce-field);
+  border-color: var(--ce-field-line);
+  color: var(--ce-ink);
+}
+
+.ce-drop-chip__remove {
+  color: var(--ce-ink-3);
+}
+
+.ce-legend {
+  color: var(--ce-ink-3);
+}
+
+.ce-legend__tick--active {
+  color: var(--ce-accent);
+}
+
+.ce-segmented-toggle label {
+  font-family: var(--ce-sans) !important;
+  background: var(--ce-field);
+  border-color: var(--ce-field-line);
+  color: var(--ce-ink-2);
+}
+
+.ce-segmented-toggle label:has(input:checked) {
+  background: var(--ce-accent);
+  border-color: var(--ce-accent);
+  color: #fff;
+}
+
+.ce-field input[type="range"] {
+  accent-color: var(--ce-accent);
+}
+
+.ce-range-readout {
+  color: var(--ce-ink);
+}
+
 /* Session sheet event log (P3) — read-only, GM-only, newest first */
 .ce-event-log {
   list-style: none;

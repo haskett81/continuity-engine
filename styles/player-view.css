@@ -188,7 +188,8 @@
 }
 
 .ce-pv-entry,
-.ce-pv-clock {
+.ce-pv-clock,
+.ce-pv-clocks {
   border-color: var(--ce-rule) !important;
 }
 
