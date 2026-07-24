@@ -417,6 +417,218 @@
   }
 }
 
+/* ══════════════════════════════════════════════════════════════════
+   Visual identity pass — design book's leather-tome look: dark window
+   chrome over a parchment body, regardless of Foundry's own light/dark
+   theme setting (deliberately not meant to flip with it). Layered on
+   top of the structural rules above; nothing above this point changes.
+   ══════════════════════════════════════════════════════════════════ */
+
+.continuity-engine.ce-sheet .window-header {
+  background: var(--ce-c-1);
+  color: #cbc5b3;
+  border-bottom: 1px solid #000;
+}
+
+.continuity-engine.ce-sheet .window-header .window-title {
+  font-family: var(--ce-serif);
+  letter-spacing: 0.03em;
+}
+
+.continuity-engine.ce-sheet .window-header a.header-control {
+  color: #7c776b;
+}
+
+.continuity-engine.ce-sheet .window-header a.header-control:hover {
+  color: var(--ce-brass);
+}
+
+.continuity-engine.ce-sheet .window-content {
+  background: var(--ce-p-0);
+  background-image: radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, 0.5), transparent 62%),
+    radial-gradient(ellipse at 95% 100%, rgba(140, 125, 90, 0.13), transparent 55%);
+  color: var(--ce-ink);
+}
+
+.continuity-engine.ce-sheet .window-content ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.continuity-engine.ce-sheet .window-content ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.continuity-engine.ce-sheet .window-content ::-webkit-scrollbar-thumb {
+  background: #b7ae95;
+  border-radius: 5px;
+  border: 2px solid var(--ce-p-0);
+}
+
+.ce-sheet__header,
+.ce-sheet__footer {
+  border-color: var(--ce-rule) !important;
+}
+
+.ce-sheet__footer {
+  color: var(--ce-ink-3);
+}
+
+.ce-name-input {
+  font-family: var(--ce-serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ce-ink);
+  border-bottom: 1px dashed transparent;
+}
+
+.ce-name-input:hover {
+  border-bottom-color: var(--ce-field-line);
+}
+
+.ce-name-input::placeholder {
+  color: #a49b81;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.ce-name-input:focus {
+  outline: none;
+  border-bottom-color: var(--ce-accent);
+}
+
+.ce-name-label,
+.ce-field label,
+.ce-group__heading {
+  color: var(--ce-ink);
+}
+
+.ce-group__heading {
+  font-family: var(--ce-serif);
+  color: var(--ce-ink-3);
+}
+
+.ce-group-break {
+  background: var(--ce-rule) !important;
+}
+
+.ce-lock {
+  color: var(--ce-ink-3);
+}
+
+.ce-sheet input[type="text"],
+.ce-sheet input[type="number"],
+.ce-sheet input[type="date"],
+.ce-sheet select,
+.ce-sheet textarea {
+  font-family: var(--ce-sans);
+  color: var(--ce-ink);
+  background: var(--ce-field);
+  border: 1px solid var(--ce-field-line);
+  border-radius: 3px;
+}
+
+.ce-sheet input::placeholder,
+.ce-sheet textarea::placeholder {
+  color: #8f866e;
+  font-style: italic;
+}
+
+.ce-sheet input:focus,
+.ce-sheet select:focus,
+.ce-sheet textarea:focus {
+  outline: none;
+  border-color: #7a6a4a;
+  box-shadow: 0 0 0 2px rgba(122, 106, 74, 0.18);
+}
+
+.ce-richtext .editor-content {
+  background: var(--ce-field);
+  border: 1px solid var(--ce-field-line);
+  border-radius: 3px;
+  color: var(--ce-ink);
+}
+
+.ce-chip {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 10.5px;
+}
+
+.ce-chip--neutral {
+  background: rgba(87, 80, 67, 0.13);
+  color: var(--ce-neutral);
+  border-color: rgba(87, 80, 67, 0.27);
+}
+
+.ce-chip--warn {
+  background: rgba(138, 90, 21, 0.14);
+  color: var(--ce-warn);
+  border-color: rgba(138, 90, 21, 0.35);
+}
+
+.ce-chip--alert,
+.ce-chip--negative {
+  background: rgba(143, 32, 32, 0.13);
+  color: var(--ce-alert);
+  border-color: rgba(143, 32, 32, 0.35);
+}
+
+.ce-chip--positive {
+  background: rgba(61, 107, 58, 0.13);
+  color: var(--ce-good);
+  border-color: rgba(61, 107, 58, 0.32);
+}
+
+.ce-toggle-btn--active {
+  background: var(--ce-accent);
+  border-color: #4c1c1c;
+  color: #fff;
+}
+
+.ce-stepper__btn,
+.ce-now-btn {
+  font-family: var(--ce-sans);
+  background: var(--ce-field);
+  border: 1px solid var(--ce-field-line);
+  color: var(--ce-ink-2);
+  border-radius: 3px;
+}
+
+.ce-stepper__btn:hover,
+.ce-now-btn:hover {
+  background: var(--ce-accent);
+  border-color: var(--ce-accent);
+  color: #fff;
+}
+
+.ce-dial__track {
+  stroke: var(--ce-field-line);
+}
+
+.ce-dial__fill--doom {
+  stroke: var(--ce-alert);
+}
+
+.ce-dial__fill--progress {
+  stroke: var(--ce-good);
+}
+
+.ce-sheet button:focus-visible,
+.ce-sheet input:focus-visible,
+.ce-sheet select:focus-visible,
+.ce-sheet a:focus-visible {
+  outline: 2px solid var(--ce-brass);
+  outline-offset: 2px;
+}
+
+.ce-event-log__entry {
+  border-color: var(--ce-rule) !important;
+}
+
+.ce-event-log__time {
+  color: var(--ce-ink-3);
+}
+
 /* Session sheet event log (P3) — read-only, GM-only, newest first */
 .ce-event-log {
   list-style: none;

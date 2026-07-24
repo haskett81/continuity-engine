@@ -182,3 +182,90 @@
 .ce-cockpit-log__quickadd input {
   flex: 1 1 auto;
 }
+
+/* ══════ Visual identity pass — see sheet.css for the same treatment
+   applied to the six sheet types; same tokens, same leather-tome look. ══════ */
+
+.continuity-engine.cockpit .window-header {
+  background: var(--ce-c-1);
+  color: #cbc5b3;
+  border-bottom: 1px solid #000;
+}
+
+.continuity-engine.cockpit .window-header .window-title {
+  font-family: var(--ce-serif);
+  letter-spacing: 0.03em;
+}
+
+.continuity-engine.cockpit .window-header a.header-control:hover {
+  color: var(--ce-brass);
+}
+
+.continuity-engine.cockpit .window-content {
+  background: var(--ce-p-0);
+  background-image: radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, 0.5), transparent 62%),
+    radial-gradient(ellipse at 95% 100%, rgba(140, 125, 90, 0.13), transparent 55%);
+  color: var(--ce-ink);
+}
+
+.continuity-engine.cockpit .window-content ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.continuity-engine.cockpit .window-content ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.continuity-engine.cockpit .window-content ::-webkit-scrollbar-thumb {
+  background: #b7ae95;
+  border-radius: 5px;
+  border: 2px solid var(--ce-p-0);
+}
+
+.continuity-engine.cockpit nav.sheet-tabs.tabs {
+  border-color: var(--ce-rule);
+}
+
+.continuity-engine.cockpit nav.sheet-tabs.tabs > a {
+  color: var(--ce-ink-2);
+}
+
+.continuity-engine.cockpit nav.sheet-tabs.tabs > a.active {
+  background: var(--ce-accent);
+  color: #fff;
+  opacity: 1;
+}
+
+.ce-cockpit-session-line {
+  font-family: var(--ce-serif);
+  color: var(--ce-ink);
+}
+
+.ce-cockpit-empty,
+.ce-cockpit-note {
+  color: var(--ce-ink-3);
+}
+
+.ce-cockpit-list > li,
+.ce-cockpit-table th,
+.ce-cockpit-table td {
+  border-color: var(--ce-rule) !important;
+}
+
+.ce-cockpit-pip {
+  border-color: var(--ce-field-line);
+}
+
+.ce-cockpit-pip--filled.ce-cockpit-pip--doom {
+  background: var(--ce-alert);
+  border-color: var(--ce-alert);
+}
+
+.ce-cockpit-pip--filled.ce-cockpit-pip--progress {
+  background: var(--ce-good);
+  border-color: var(--ce-good);
+}
+
+.ce-cockpit-slider label {
+  color: var(--ce-ink-2);
+}

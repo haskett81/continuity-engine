@@ -11,6 +11,7 @@ import { ContinuityCockpit } from "../cockpit/cockpit.js";
 import { PlayerView } from "../player-view/player-view.js";
 import { prepareBoardContext } from "../cockpit/tabs/board.js";
 import { i18n } from "../../foundry-utils.js";
+import { ceMarkSvg } from "../../mark.js";
 
 const ICON_ID = "continuity-engine-dock";
 const DEFAULT_POSITION = { left: 20, top: 200 };
@@ -86,9 +87,7 @@ function buildIcon(): HTMLElement {
   // the real lang key for the other side.
   el.dataset.tooltip = isGM ? "Continuity Cockpit" : i18n().localize("CE.playerView.title");
 
-  const icon = document.createElement("i");
-  icon.className = "fa-solid fa-compass-drafting ce-dock__icon";
-  el.appendChild(icon);
+  el.insertAdjacentHTML("beforeend", ceMarkSvg("ce-dock__icon"));
 
   if (isGM) {
     const badge = document.createElement("span");

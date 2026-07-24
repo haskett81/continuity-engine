@@ -127,11 +127,74 @@
 }
 
 .ce-pv-entry--mine {
-  border-left: 3px solid #b8913f;
+  border-left: 3px solid var(--ce-brass, #b8913f);
   background: rgba(184, 145, 63, 0.09);
   padding: 12px;
   border-radius: 0 4px 4px 0;
   border-bottom: none;
+}
+
+/* ══════ Visual identity pass — see sheet.css for the same treatment
+   applied to the six sheet types; same tokens, same leather-tome look. ══════ */
+
+.continuity-engine.player-view .window-header {
+  background: var(--ce-c-1);
+  color: #cbc5b3;
+  border-bottom: 1px solid #000;
+}
+
+.continuity-engine.player-view .window-header .window-title {
+  font-family: var(--ce-serif);
+  letter-spacing: 0.03em;
+}
+
+.continuity-engine.player-view .window-header a.header-control:hover {
+  color: var(--ce-brass);
+}
+
+.continuity-engine.player-view .window-content {
+  background: var(--ce-p-0);
+  background-image: radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, 0.5), transparent 62%),
+    radial-gradient(ellipse at 95% 100%, rgba(140, 125, 90, 0.13), transparent 55%);
+  color: var(--ce-ink);
+}
+
+.continuity-engine.player-view .window-content ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.continuity-engine.player-view .window-content ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.continuity-engine.player-view .window-content ::-webkit-scrollbar-thumb {
+  background: #b7ae95;
+  border-radius: 5px;
+  border: 2px solid var(--ce-p-0);
+}
+
+.continuity-engine.player-view nav.sheet-tabs.tabs {
+  border-color: var(--ce-rule);
+}
+
+.continuity-engine.player-view nav.sheet-tabs.tabs > a {
+  color: var(--ce-ink-2);
+}
+
+.continuity-engine.player-view nav.sheet-tabs.tabs > a.active {
+  background: var(--ce-accent);
+  color: #fff;
+  opacity: 1;
+}
+
+.ce-pv-entry,
+.ce-pv-clock {
+  border-color: var(--ce-rule) !important;
+}
+
+.ce-pv-when,
+.ce-pv-source {
+  color: var(--ce-ink-3);
 }
 
 /* Dock icon — a floating overlay on #interface (verified live: the correct
@@ -141,11 +204,11 @@
 .ce-dock {
   position: absolute;
   z-index: 60;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: #1d1c19;
-  border: 2px solid #b8913f;
+  background: var(--ce-c-1, #131317);
+  border: 2px solid var(--ce-brass, #b8913f);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,6 +216,11 @@
   touch-action: none;
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.6);
   user-select: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.ce-dock:hover {
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.6), 0 0 0 4px rgba(184, 145, 63, 0.16);
 }
 
 .ce-dock:active {
@@ -160,8 +228,8 @@
 }
 
 .ce-dock__icon {
-  color: #b8913f;
-  font-size: 20px;
+  width: 30px;
+  height: 30px;
   pointer-events: none;
 }
 
@@ -173,13 +241,13 @@
   height: 18px;
   padding: 0 4px;
   border-radius: 9px;
-  background: #8f2020;
+  background: var(--ce-alert, #8f2020);
   color: #fff;
   font-size: 11px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #16100f;
+  border: 2px solid var(--ce-c-0, #0b0b0d);
   pointer-events: none;
 }
