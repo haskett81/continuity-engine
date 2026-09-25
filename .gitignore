@@ -1,5 +1,6 @@
 node_modules/
 dist/
 module.zip
+.claude-plugin/
 *.log
 .DS_Store

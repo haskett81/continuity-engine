@@ -54,8 +54,8 @@ export class ThreadModel extends foundry.abstract.TypeDataModel<
   }
 
   // UX spec migration: the old status ladder's "abandoned" has no slot in
-  // the new one (open/active/dormant/resolved) — closest semantic match,
-  // confirmed with Cyrus, is dormant. Runs on every load; idempotent since a
+  // the new one (open/active/dormant/resolved) — closest semantic match is
+  // dormant. Runs on every load; idempotent since a
   // migrated value never matches "abandoned" again.
   static override migrateData(source: Record<string, unknown>): Record<string, unknown> {
     if (source.status === "abandoned") {
