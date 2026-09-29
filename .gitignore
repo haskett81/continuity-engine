@@ -4,3 +4,10 @@ module.zip
 .claude-plugin/
 *.log
 .DS_Store
+
+# Local AI assistant files: never published
+CLAUDE.md
+AGENTS.md
+.claude/
+.codex/
+.agents/
