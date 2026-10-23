@@ -9,6 +9,7 @@
     "clean": "node -e \"import('node:fs').then(fs=>fs.rmSync('dist',{recursive:true,force:true}))\"",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "release": "node scripts/release.mjs"
   },
   "repository": {
@@ -25,6 +26,7 @@
     "esbuild": "^0.23.0",
     "eslint": "^9.39.5",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.72.0"
+    "typescript-eslint": "^8.72.0",
+    "vitest": "^3.2.7"
   }
 }
