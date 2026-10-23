@@ -12,6 +12,13 @@ import { registerLedger } from "./state/ledger.js";
 import { registerSchemaVersionSetting, runMigrations } from "./state/migrations.js";
 import { registerCockpitEntryPoint } from "./apps/cockpit/register.js";
 import { registerTypePickerGrouping } from "./apps/type-picker.js";
+import { registerSessionTracker } from "./state/session-tracker.js";
+import { registerStructuralMarkers } from "./apps/structural-markers.js";
+import { registerGmOnlyEnforcement } from "./state/gm-only.js";
+import { registerPublishSync } from "./state/publish.js";
+import { registerDockIcon, registerDockSettings } from "./apps/dock/dock.js";
+import { registerSceneControlEntry } from "./apps/scene-controls.js";
+import { registerExportEntryPoint } from "./apps/export-entry.js";
 
 Hooks.once("init", async () => {
   Object.assign(CONFIG.JournalEntryPage.dataModels, {
@@ -34,6 +41,14 @@ Hooks.once("init", async () => {
   registerSchemaVersionSetting();
   registerCockpitEntryPoint();
   registerTypePickerGrouping();
+  registerSessionTracker();
+  registerStructuralMarkers();
+  registerGmOnlyEnforcement();
+  registerPublishSync();
+  registerDockSettings();
+  registerDockIcon();
+  registerSceneControlEntry();
+  registerExportEntryPoint();
 
   // foundry-vtt-types' preUpdateJournalEntryPage overload requires the real
   // (very large) JournalEntryPage system union type; onPreUpdateThreadPage

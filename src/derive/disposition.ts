@@ -13,3 +13,17 @@ export function dispositionBand(value: number): string {
   const index = Math.min(Math.ceil(Math.abs(value) / 20), 5);
   return value > 0 ? POSITIVE_BANDS[index - 1]! : NEGATIVE_BANDS[index - 1]!;
 }
+
+/**
+ * P4: the number a published Faction copy carries instead of the real
+ * disposition — the band's own boundary (20/40/60/80/100, signed), which
+ * `dispositionBand()` maps back to the identical band and nothing more
+ * precise. `dispositionBand` itself is a derived field, not schema — a
+ * publish copy can't carry a derived value directly, so it re-derives from
+ * this representative number instead of the true one.
+ */
+export function representativeDisposition(value: number): number {
+  if (value === 0) return 0;
+  const index = Math.min(Math.ceil(Math.abs(value) / 20), 5);
+  return value > 0 ? index * 20 : -(index * 20);
+}

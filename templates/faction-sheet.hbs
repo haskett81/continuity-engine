@@ -33,12 +33,12 @@
 
     <div class="ce-field ce-richtext" style="--ce-rt-min: 110px" data-placeholder="{{localize "CE.faction.agenda.placeholder"}}">
       <label for="system.agenda">{{localize "CE.faction.agenda.label"}}</label>
-      {{editor system.agenda target="system.agenda" button=true engine="prosemirror" collaborate=false editable=true}}
+      {{{agendaInput}}}
     </div>
 
     <div class="ce-field ce-richtext" style="--ce-rt-min: 110px" data-placeholder="{{localize "CE.faction.currentMove.placeholder"}}">
       <label for="system.currentMove">{{localize "CE.faction.currentMove.label"}}</label>
-      {{editor system.currentMove target="system.currentMove" button=true engine="prosemirror" collaborate=false editable=true}}
+      {{{currentMoveInput}}}
     </div>
 
     <div class="ce-group-break"></div>

@@ -1,4 +1,4 @@
-import { ContinuityPageSheet, dropSlotContext, sessionFieldContext } from "./base-sheet.js";
+import { ContinuityPageSheet, dropSlotContext, sessionFieldContext, richTextInputContext } from "./base-sheet.js";
 import { type Chip, type ChipTone } from "../ui/chips.js";
 import { i18n } from "../foundry-utils.js";
 
@@ -64,6 +64,18 @@ export class FactionSheet extends ContinuityPageSheet {
         labelKey: "CE.faction.lastContact.label",
         hintKey: "CE.faction.lastContact.hint",
         value: system.lastContact,
+      }),
+      agendaInput: await richTextInputContext({
+        document: this.document,
+        field: "agenda",
+        value: system.agenda,
+        placeholderKey: "CE.faction.agenda.placeholder",
+      }),
+      currentMoveInput: await richTextInputContext({
+        document: this.document,
+        field: "currentMove",
+        value: system.currentMove,
+        placeholderKey: "CE.faction.currentMove.placeholder",
       }),
     };
   }

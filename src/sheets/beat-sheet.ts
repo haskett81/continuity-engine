@@ -1,4 +1,4 @@
-import { ContinuityPageSheet, dropSlotContext, sessionFieldContext } from "./base-sheet.js";
+import { ContinuityPageSheet, dropSlotContext, sessionFieldContext, richTextInputContext } from "./base-sheet.js";
 import { overdueChip, type Chip } from "../ui/chips.js";
 import { i18n } from "../foundry-utils.js";
 
@@ -42,6 +42,12 @@ export class BeatSheet extends ContinuityPageSheet {
         labelKey: "CE.beat.lastSpotlightSession.label",
         hintKey: "CE.beat.lastSpotlightSession.hint",
         value: system.lastServedSession,
+      }),
+      hookInput: await richTextInputContext({
+        document: this.document,
+        field: "hook",
+        value: system.hook,
+        placeholderKey: "CE.beat.hook.placeholder",
       }),
     };
   }

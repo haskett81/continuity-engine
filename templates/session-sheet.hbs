@@ -31,13 +31,30 @@
 
     <div class="ce-field ce-richtext" style="--ce-rt-min: 160px" data-placeholder="{{localize "CE.session.recap.placeholder"}}">
       <label for="system.recap">{{localize "CE.session.recap.label"}}</label>
-      {{editor system.recap target="system.recap" button=true engine="prosemirror" collaborate=false editable=true}}
+      {{{recapInput}}}
     </div>
 
     <div class="ce-field ce-richtext ce-richtext--collapsed" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.session.gmNotes.placeholder"}}">
       <label for="system.gmNotes"><span class="ce-lock" aria-hidden="true">&#128274;</span> {{localize "CE.session.gmNotes.label"}}</label>
-      {{editor system.gmNotes target="system.gmNotes" button=true engine="prosemirror" collaborate=false editable=true}}
+      {{{gmNotesInput}}}
     </div>
+
+    {{#if events.length}}
+    <div class="ce-group-break"></div>
+
+    <div class="ce-field">
+      <label><span class="ce-lock" aria-hidden="true">&#128274;</span> {{localize "CE.session.events.heading"}}</label>
+      <ul class="ce-event-log">
+        {{#each events}}
+        <li class="ce-event-log__entry">
+          <span class="ce-event-log__time">{{this.time}}</span>
+          <span class="ce-chip ce-chip--neutral">{{this.kindLabel}}</span>
+          <span class="ce-event-log__text">{{this.text}}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
   </div>
 
   <footer class="ce-sheet__footer">

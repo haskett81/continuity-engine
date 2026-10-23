@@ -1,6 +1,13 @@
-import { ContinuityPageSheet, dropListContext } from "./base-sheet.js";
+import { ContinuityPageSheet, dropListContext, richTextInputContext } from "./base-sheet.js";
 import { type Chip } from "../ui/chips.js";
 import { i18n } from "../foundry-utils.js";
+
+interface EventEntry {
+  timestamp: string;
+  kind: string;
+  text: string;
+  refs: string[];
+}
 
 interface SessionSystemLike {
   number: number;
@@ -9,6 +16,7 @@ interface SessionSystemLike {
   attendees: string[];
   recap: string;
   gmNotes: string;
+  events: EventEntry[];
 }
 
 export class SessionSheet extends ContinuityPageSheet {
@@ -37,6 +45,25 @@ export class SessionSheet extends ContinuityPageSheet {
         labelKey: "CE.session.attendees.label",
         emptyTextKey: "CE.session.attendees.empty",
         uuids: system.attendees,
+      }),
+      events: (system.events ?? [])
+        .map((e) => ({
+          time: new Date(e.timestamp).toLocaleString(),
+          kindLabel: i18n().localize(`CE.session.events.kind.${e.kind}`),
+          text: e.text,
+        }))
+        .reverse(),
+      recapInput: await richTextInputContext({
+        document: this.document,
+        field: "recap",
+        value: system.recap,
+        placeholderKey: "CE.session.recap.placeholder",
+      }),
+      gmNotesInput: await richTextInputContext({
+        document: this.document,
+        field: "gmNotes",
+        value: system.gmNotes,
+        placeholderKey: "CE.session.gmNotes.placeholder",
       }),
     };
   }

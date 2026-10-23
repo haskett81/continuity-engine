@@ -1,4 +1,4 @@
-import { ContinuityPageSheet, dropSlotContext, sessionFieldContext } from "./base-sheet.js";
+import { ContinuityPageSheet, dropSlotContext, sessionFieldContext, richTextInputContext } from "./base-sheet.js";
 import { clockFillChip, type Chip } from "../ui/chips.js";
 import { i18n } from "../foundry-utils.js";
 
@@ -63,6 +63,12 @@ export class ClockSheet extends ContinuityPageSheet {
         labelKey: "CE.clock.lastAdvancedSession.label",
         hintKey: "CE.clock.lastAdvancedSession.hint",
         value: system.lastAdvancedSession,
+      }),
+      triggerInput: await richTextInputContext({
+        document: this.document,
+        field: "trigger",
+        value: system.trigger,
+        placeholderKey: "CE.clock.trigger.placeholder",
       }),
     };
   }

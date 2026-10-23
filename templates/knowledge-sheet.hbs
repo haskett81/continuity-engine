@@ -15,12 +15,12 @@
   <div class="ce-sheet__body">
     <div class="ce-field ce-richtext" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.knowledge.truth.placeholder"}}">
       <label for="system.truth"><span class="ce-lock" aria-hidden="true">&#128274;</span> {{localize "CE.knowledge.truth.label"}}</label>
-      {{editor system.truth target="system.truth" button=true engine="prosemirror" collaborate=false editable=true}}
+      {{{truthInput}}}
     </div>
 
     <div class="ce-field ce-richtext" style="--ce-rt-min: 120px" data-placeholder="{{localize "CE.knowledge.partyBelief.placeholder"}}">
       <label for="system.partyBelief">{{localize "CE.knowledge.partyBelief.label"}}</label>
-      {{editor system.partyBelief target="system.partyBelief" button=true engine="prosemirror" collaborate=false editable=true}}
+      {{{partyBeliefInput}}}
     </div>
 
     <div class="ce-group-break"></div>

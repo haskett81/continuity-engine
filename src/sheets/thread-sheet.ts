@@ -1,4 +1,4 @@
-import { ContinuityPageSheet, sessionFieldContext } from "./base-sheet.js";
+import { ContinuityPageSheet, sessionFieldContext, richTextInputContext } from "./base-sheet.js";
 import { staleChip, type Chip } from "../ui/chips.js";
 import { i18n } from "../foundry-utils.js";
 import { pressureBand } from "../derive/pressure.js";
@@ -66,6 +66,18 @@ export class ThreadSheet extends ContinuityPageSheet {
         value: system.resolvedSession,
       }),
       resolvedDisabled: system.status !== "resolved",
+      stakesInput: await richTextInputContext({
+        document: this.document,
+        field: "stakes",
+        value: system.stakes,
+        placeholderKey: "CE.thread.stakes.placeholder",
+      }),
+      resolutionInput: await richTextInputContext({
+        document: this.document,
+        field: "resolution",
+        value: system.resolution,
+        placeholderKey: "CE.thread.resolution.placeholder",
+      }),
     };
   }
 }

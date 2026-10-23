@@ -1,0 +1,40 @@
+/* Design book palette/type tokens, scoped to `.continuity-engine` so nothing
+   here leaks onto Foundry's own chrome or other modules' windows. Every
+   other stylesheet in this module reads from these custom properties rather
+   than hardcoding colors/fonts — this is the one file that defines the
+   actual values. */
+.continuity-engine {
+  /* parchment surface */
+  --ce-p-0: #e9e3d5;
+  --ce-p-1: #e2dbc9;
+  --ce-p-2: #efeade;
+  --ce-ink: #1b1a15;
+  --ce-ink-2: #5b5646;
+  --ce-ink-3: #8a8371;
+  --ce-field: #d6cfbc;
+  --ce-field-line: #a89f88;
+  --ce-rule: #c3bba4;
+
+  /* signals */
+  --ce-accent: #6d2a2a;
+  --ce-brass: #b8913f;
+  --ce-alert: #8f2020;
+  --ce-warn: #8a5a15;
+  --ce-good: #3d6b3a;
+  --ce-neutral: #575043;
+
+  /* dark chrome (window bars, dock icon) */
+  --ce-c-0: #0b0b0d;
+  --ce-c-1: #131317;
+  --ce-c-2: #1a1a1f;
+  --ce-c-line: #31313a;
+
+  /* type */
+  --ce-serif: "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+  --ce-sans: "Segoe UI", Roboto, -apple-system, Helvetica, Arial, sans-serif;
+  --ce-mono: "SF Mono", Menlo, Consolas, "Roboto Mono", monospace;
+}
+
+/* Deliberate single visual world (design book): a leather-bound campaign
+   tome look — parchment panes inside dark window chrome — regardless of
+   Foundry's own light/dark theme setting. Not meant to flip with it. */

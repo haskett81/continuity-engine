@@ -1,71 +1,50 @@
-![](https://img.shields.io/badge/Foundry-v10-informational)
-<!--- Downloads @ Latest Badge -->
-<!--- replace <user>/<repo> with your username/repository -->
-<!--- ![Latest Release Download Count](https://img.shields.io/github/downloads/<user>/<repo>/latest/module.zip) -->
+# Continuity
 
-<!--- Forge Bazaar Install % Badge -->
-<!--- replace <your-module-name> with the `name` in your manifest -->
-<!--- ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2F<your-module-name>&colorB=4aa94a) -->
+Continuity is a Foundry VTT module for keeping track of a campaign between sessions. It stores open story threads, faction activity, clocks, what the party believes, character beats, and session notes as Foundry journal pages.
 
+The current release is **v0.3.17**. Its module manifest declares Foundry VTT **v14** as both the minimum and verified version. The project is pre-1.0; back up a world before trying it with an existing campaign.
 
-# How to use this Template to create a versioned Release
+## What you can track
 
-1. Open your repository's releases page.
+| Page type | Use it for |
+| --- | --- |
+| Thread | An unresolved storyline, its stakes, and its current pressure |
+| Clock | Progress toward an event or consequence |
+| Faction | A group's disposition and current move |
+| Knowledge | The difference between what is true and what the party believes |
+| Beat | A personal story beat for a player character |
+| Session | Notes and events from a session |
 
-![Where to click to open repository releases.](https://user-images.githubusercontent.com/7644614/93409301-9fd25080-f864-11ea-9e0c-bdd09e4418e4.png)
+The GM Cockpit brings these pages together. Its Board highlights threads, clocks, beats, and knowledge that may need attention. Begin Session and End Session controls help record what happened while it is fresh.
 
-2. Click "Draft a new release"
+Players see a separate Campaign Chronicle. The GM chooses which information to publish to it; GM journal pages are not shown there directly.
 
-![Draft a new release button.](https://user-images.githubusercontent.com/7644614/93409364-c1333c80-f864-11ea-89f1-abfcb18a8d9f.png)
+Continuity does not roll dice, automate combat, import adventures, or send campaign data to an AI service.
 
-3. Fill out the release version as the tag name.
+## Getting started
 
-If you want to add details at this stage you can, or you can always come back later and edit them.
+In Foundry VTT v14, open **Add-on Modules → Install Module** and paste this manifest URL:
 
-![Release Creation Form](https://user-images.githubusercontent.com/7644614/93409543-225b1000-f865-11ea-9a19-f1906a724421.png)
+```text
+https://github.com/haskett81/continuity-engine/releases/download/v0.3.17/module.json
+```
 
-4. Hit submit.
+This link points to the specific v0.3.17 release. After installation, enable Continuity in your world. Create its page types in a journal, or open the GM Cockpit from the dock icon.
 
-5. Wait a few minutes.
+The [release page](https://github.com/haskett81/continuity-engine/releases/tag/v0.3.17) also provides the package files. The module has not been verified in every game system or alongside every other module.
 
-A Github Action will run to populate the `module.json` and `module.zip` with the correct urls that you can then use to distribute this release. You can check on its status in the "Actions" tab.
+## Develop
 
-![Actions Tab](https://user-images.githubusercontent.com/7644614/93409820-c1800780-f865-11ea-8c6b-c3792e35e0c8.png)
+Use Node.js 20 with the checked-in lockfile:
 
-6. Grab the module.json url from the release's details page.
+```text
+npm ci
+npm run typecheck
+npm run build
+```
 
-![image](https://user-images.githubusercontent.com/7644614/93409960-10c63800-f866-11ea-83f6-270cc5d10b71.png)
+The build writes a Foundry package to `dist/`. See [SETUP.md](SETUP.md) for the release process.
 
-This `module.json` will only ever point at this release's `module.zip`, making it useful for sharing a specific version for compatibility purposes.
+## License
 
-7. You can use the url `https://github.com/<user>/<repo>/releases/latest/download/module.json` to refer to the manifest.
-
-This is the url you want to use to install the module typically, as it will get updated automatically.
-
-# How to List Your Releases on Package Admin
-
-To request a package listing for your first release, go to the [Package Submission Form](https://foundryvtt.com/packages/submit) (accessible via a link at the bottom of the "[Systems and Modules](https://foundryvtt.com/packages/)" page on the Foundry website).
-
-Fill in the form. "Package Name" must match the name in the module manifest.  Package Title will be the display name for the package.  Package URL should be your repo URL.
-![image](https://user-images.githubusercontent.com/36359784/120664263-b49e5500-c482-11eb-9126-af7006389903.png)
-
-
-One of the Foundry staff will typically get back to you with an approval or any further questions within a few days, and give you access to the package admin pages.
-
-Once you have access to the [module admin page](https://foundryvtt.com/admin/packages/package/), you can release a new version by going into the page for your module, scrolling to the bottom, and filling in a new Package Version.
-
-When listing a new version, Version should be the version number you set above, and the Manifest URL should be the manifest __for that specific version__ (do not use /latest/ here).
-![image](https://user-images.githubusercontent.com/36359784/120664346-c4b63480-c482-11eb-9d8b-731b50d70939.png)
-
-> ### :warning: Important :warning:
-> 
-> It is very important that you use the specific release manifest url, and not the `/latest` url here. For more details about why this is important and how Foundry Installs/Updates packages, read [this wiki article](https://foundryvtt.wiki/en/development/guides/releases-and-history).
-
-Clicking "Save" in the bottom right will save the new version, which means that anyone installing your module from within Foundry will get that version, and a post will be generated in the #release-announcements channel on the official Foundry VTT Discord.
-
-
-# FoundryVTT Module
-
-Does something, probably
-
-## Changelog
+[MIT](LICENSE). Built with AI assistance.

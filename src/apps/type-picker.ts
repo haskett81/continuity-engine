@@ -1,10 +1,7 @@
-// Sheet UX spec §3: group the six Continuity Engine page types together and
-// first in the "Create Page" dialog's type <select>, ahead of core/system
-// types (which fall under a single "Foundry" group per the spec's example).
+// Group the six Continuity page types first in the "Create Page" dialog's
+// type <select>, ahead of core/system types in a "Foundry" group.
 //
-// Verified live in Cyrus's v14.363 world before writing this (per spec §3.4
-// and this project's established practice of not shipping against a
-// remembered API shape):
+// Observed in Foundry v14.363:
 //   - The Create Page dialog is a generic `DialogV2` (title "Create Page"),
 //     not a dedicated per-document-type application — detect it by the
 //     presence of `select[name="type"]` containing our type values, not by

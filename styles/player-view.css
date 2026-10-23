@@ -1,0 +1,327 @@
+/* Same tab-navigation wiring gotcha as cockpit.css: Foundry's core CSS
+   hides non-`.active` `.tab` elements, but each PART's own template has to
+   set class="tab" + data-tab/data-group itself — not automatic from
+   static TABS. See cockpit.css's comment for the full explanation. */
+.continuity-engine.player-view {
+  --ce-gap-field: 16px;
+  --ce-gap-group: 24px;
+}
+
+.continuity-engine.player-view .window-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.continuity-engine.player-view nav.sheet-tabs.tabs {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+  padding-bottom: 4px;
+  margin-bottom: var(--ce-gap-group);
+}
+
+.continuity-engine.player-view nav.sheet-tabs.tabs > a {
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: 4px 4px 0 0;
+  opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.continuity-engine.player-view nav.sheet-tabs.tabs > a.active {
+  opacity: 1;
+  font-weight: 600;
+  background: var(--color-bg-option, #e3e3e3);
+}
+
+.ce-pv-tab {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.ce-pv-empty {
+  opacity: 0.65;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.ce-pv-entry {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+}
+
+.ce-pv-entry:last-child {
+  border-bottom: none;
+}
+
+.ce-pv-entry h4 {
+  margin: 0 0 4px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ce-pv-when {
+  font-size: var(--font-size-11, 11px);
+  opacity: 0.75;
+  font-weight: 400;
+}
+
+.ce-pv-richtext {
+  line-height: 1.5;
+}
+
+.ce-pv-richtext p:first-child {
+  margin-top: 0;
+}
+
+.ce-pv-richtext p:last-child {
+  margin-bottom: 0;
+}
+
+.ce-pv-source {
+  font-size: var(--font-size-12, 12px);
+  opacity: 0.7;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.ce-pv-tags {
+  margin-top: 6px;
+}
+
+.ce-pv-clocks {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: var(--ce-gap-group);
+  padding-bottom: var(--ce-gap-group);
+  border-bottom: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+}
+
+.ce-pv-clock {
+  flex: 1 1 190px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border-light-tertiary, #c9c7b8);
+  border-radius: 4px;
+}
+
+.ce-pv-clock b {
+  display: block;
+  font-size: var(--font-size-13, 13px);
+}
+
+.ce-pv-clock em {
+  font-style: normal;
+  font-size: var(--font-size-11, 11px);
+  opacity: 0.7;
+}
+
+.ce-pv-entry--mine {
+  border-left: 3px solid var(--ce-brass, #b8913f);
+  background: rgba(184, 145, 63, 0.09);
+  padding: 12px;
+  border-radius: 0 4px 4px 0;
+  border-bottom: none;
+}
+
+/* ══════ Visual identity pass — see sheet.css for the same treatment
+   applied to the six sheet types; same tokens, same leather-tome look. ══════ */
+
+.continuity-engine.player-view .window-header {
+  background: var(--ce-c-1);
+  color: #cbc5b3;
+  border-bottom: 1px solid #000;
+}
+
+.continuity-engine.player-view .window-header .window-title {
+  font-family: var(--ce-serif);
+  letter-spacing: 0.03em;
+}
+
+.continuity-engine.player-view .window-header a.header-control:hover {
+  color: var(--ce-brass);
+}
+
+.continuity-engine.player-view .window-content {
+  background: var(--ce-p-0);
+  background-image: radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, 0.5), transparent 62%),
+    radial-gradient(ellipse at 95% 100%, rgba(140, 125, 90, 0.13), transparent 55%);
+  color: var(--ce-ink);
+}
+
+.continuity-engine.player-view .window-content ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.continuity-engine.player-view .window-content ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.continuity-engine.player-view .window-content ::-webkit-scrollbar-thumb {
+  background: #b7ae95;
+  border-radius: 5px;
+  border: 2px solid var(--ce-p-0);
+}
+
+.continuity-engine.player-view nav.sheet-tabs.tabs {
+  border-color: var(--ce-rule);
+}
+
+.continuity-engine.player-view nav.sheet-tabs.tabs > a {
+  color: var(--ce-ink-2);
+}
+
+.continuity-engine.player-view nav.sheet-tabs.tabs > a.active {
+  background: var(--ce-accent);
+  color: #fff;
+  opacity: 1;
+}
+
+.ce-pv-entry,
+.ce-pv-clock,
+.ce-pv-clocks {
+  border-color: var(--ce-rule) !important;
+}
+
+.ce-pv-when,
+.ce-pv-source {
+  color: var(--ce-ink-3);
+}
+
+/* Dock icon — a floating overlay on #interface (verified live: the correct
+   layer for a freely-positioned element, sibling to the canvas). Position
+   is set inline per-instance (styles/dockPosition setting); everything else
+   lives here. */
+.ce-dock {
+  position: absolute;
+  z-index: 60;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  filter: drop-shadow(0 3px 9px rgba(0, 0, 0, 0.7));
+  transition: filter 0.15s ease;
+}
+
+/* The mark SVG already carries its own ring + filled plate (see src/mark.ts)
+   — no separate circular background here, matching the design book's own
+   dock icon, which is just the mark plus a hover glow. */
+.ce-dock:hover {
+  filter: drop-shadow(0 0 10px rgba(184, 145, 63, 0.5)) drop-shadow(0 3px 9px rgba(0, 0, 0, 0.7));
+}
+
+.ce-dock:active {
+  cursor: grabbing;
+}
+
+.ce-dock__icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.ce-dock__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--ce-alert, #8f2020);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--ce-c-0, #0b0b0d);
+  pointer-events: none;
+}
+
+/* Corner resize grip — scales with the icon (see applyPositionAndSize in
+   dock.ts), floored so it stays a usable hit target at the smallest icon
+   size instead of shrinking to a sliver. */
+.ce-dock__grip {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 2px;
+  cursor: nwse-resize;
+  background: var(--ce-brass, #b8913f);
+  border: 1.5px solid var(--ce-c-0, #0b0b0d);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.ce-dock:hover .ce-dock__grip,
+.ce-dock:focus-within .ce-dock__grip {
+  opacity: 1;
+}
+
+/* Right-click context menu */
+.ce-dock-menu {
+  position: absolute;
+  z-index: 70;
+  min-width: 200px;
+  background: var(--ce-c-1, #131317);
+  border: 1px solid var(--ce-c-line, #31313a);
+  border-radius: 4px;
+  padding: 4px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.7);
+  font-family: var(--ce-sans);
+}
+
+.ce-dock-menu__item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #cfc9b6;
+  cursor: pointer;
+  font-family: var(--ce-sans);
+  font-size: 12.5px;
+  padding: 6px 9px;
+  border-radius: 3px;
+}
+
+.ce-dock-menu__item:hover:not(:disabled) {
+  background: var(--ce-accent, #6d2a2a);
+  color: #fff;
+}
+
+.ce-dock-menu__item:focus-visible {
+  outline: 2px solid var(--ce-brass, #b8913f);
+  outline-offset: -2px;
+  background: var(--ce-c-2, #1a1a1f);
+}
+
+.ce-dock-menu__item:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ce-dock-menu__item--checked {
+  color: var(--ce-brass, #b8913f);
+}
+
+.ce-dock-menu__item--checked::before {
+  content: "✓ ";
+}
+
+.ce-dock-menu__separator {
+  border: none;
+  border-top: 1px solid var(--ce-c-line, #31313a);
+  margin: 4px 2px;
+}

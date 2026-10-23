@@ -1,0 +1,13 @@
+<section class="tab ce-pv-tab" data-tab="mine" data-group="primary">
+  {{#if mineEmpty}}
+    <p class="ce-pv-empty">{{localize "CE.playerView.mine.empty"}}</p>
+  {{else}}
+    {{#each beats}}
+    <article class="ce-pv-entry ce-pv-entry--mine">
+      <h4>{{this.name}}</h4>
+      <div class="ce-pv-richtext">{{{this.hook}}}</div>
+      <div class="ce-pv-source">{{localize "CE.playerView.mine.onlyYou"}}</div>
+    </article>
+    {{/each}}
+  {{/if}}
+</section>
