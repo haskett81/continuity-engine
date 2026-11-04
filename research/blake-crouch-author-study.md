@@ -1,6 +1,6 @@
 # Blake Crouch: Author Study
 
-**v2 · 2026-11-03** — rebuilt from direct reading of Wikipedia, Goodreads (both long interviews and all 235 of Crouch's reader answers), six full Kirkus reviews and publisher excerpts of six novels; v1 errors corrected.
+**v3 · 2026-11-04** — adds pass three: all 544 of Crouch's Reddit AMA answers, 24 Reddit reader threads, full critic reviews (NPR, The Guardian, Locus, Publishers Weekly), a measured comparison with peer openings, and a currency check. Matches the report doc "Blake Crouch: Author Study Report" v2. v2 of this file (2026-11-03) was rebuilt from direct reading of Wikipedia, Goodreads, Kirkus and publisher excerpts.
 
 **Spoiler warning.** This study discusses the twists and endings of *Pines*, *Dark Matter*, *Recursion* and *Upgrade*.
 
@@ -11,6 +11,8 @@ Blake Crouch starts every book from a concept, never a character: a piece of eme
 Under all of it runs one argument, repeated book after book. A technology promises to erase regret, pain or human weakness, and the book answers that you cannot cheat: "Life with a cheat code isn't life" (*Recursion*), "You live with your choices and learn. You don't cheat the system" (*Dark Matter*), "You can't kill humanity to save humanity" (*Upgrade*).
 
 Readers love him for momentum, big ideas made easy, twists that land and a real emotional core. *Dark Matter* has over 827,000 Goodreads ratings with 79% at four or five stars. Critics fault the cost of the speed: single-line paragraphs, thin minor characters, convenient science, and theme lines stated out loud. Those are the same choices seen from two sides.
+
+Pass three sharpens this. On Reddit he ranked the order he works in: idea, structure, plot, character, world, theme, then prose. He writes "at the fifth grade reading level" on purpose and edits to the sound of his own voice read aloud. Measured against Crichton, Weir and Haig, his sentences and reading grade are ordinary. His paragraphing is not: about half his opening paragraphs are one sentence, against a quarter to a third for the peers. Read whole, the critics' complaints about his prose sit inside positive reviews.
 
 ## How this study was built
 
@@ -24,8 +26,16 @@ Readers love him for momentum, big ideas made easy, twists that land and a real 
 - **Kirkus:** the full reviews of *Desert Places*, *Locked Doors*, *Dark Matter*, *Recursion*, *Summer Frost* and *Upgrade*.
 - **Penguin Random House:** the publisher's own excerpts. These are the opening chapters of *Dark Matter*, *Recursion*, *Upgrade*, *Pines*, *Abandon* and *Run*.
 
+**Read directly in pass three (v3, November 4, 2026), after all network limits were lifted.**
+- **Crouch on Reddit:** all 544 of his answers as u/blakecrouch: r/books AMAs in 2015, 2017, 2019, 2020 and 2022, r/television in 2024, and an r/Fantasy time-travel panel in 2020. Read through the [Arctic Shift](https://arctic-shift.photon-reddit.com/) Reddit archive, because reddit.com itself blocks this machine.
+- **Reddit readers:** 24 discussion threads on r/books, r/printSF and r/scifi, 2016 to 2025, about 1,200 comments. For each thread I read the seven most-upvoted top-level replies, first 550 characters each.
+- **Critics in full:** NPR (Jason Sheehan on *Dark Matter*, *Recursion* and *Upgrade*); The Guardian (Alison Flood on *Dark Matter* and the *Run* reissue); Locus (Paul Di Filippo on *Recursion*, Gabino Iglesias on *Upgrade*); Publishers Weekly on *Desert Places*; Reactor (May 2024 interview).
+- **Peer openings:** publisher excerpts of *Jurassic Park*, *Project Hail Mary*, *The Martian* and *The Midnight Library*, measured by script beside four Crouch openings.
+- **Currency:** blakecrouch.com and Winter Is Coming (October 23, 2026).
+- **Not read:** The New York Times (paywalled; snippets marked †) and a Space.com interview (October 9, 2026) that returned only its headline.
+
 **Still not reachable.**
-- **Reddit** refuses automated reading without a logged-in account, on both www.reddit.com and old.reddit.com.
+- **Reddit** (reddit.com directly) blocks automated reading; pass three used the archive above instead.
 - **Google Books** sends automated requests to a robot check.
 - **The Internet Archive** (web.archive.org) still does not connect from this session.
 - **Other interview sites** (The Qwillery, The Portalist, Barnes & Noble, Chicago Review of Books, Paul Semel, Time, Script Magazine, Suspense Magazine, EW, Science Friday, Fresh Fiction, Locus) are outside the allowed list. What they say comes from v1's web searches.
@@ -150,6 +160,27 @@ My reading: both spouses gave up careers, so the road-not-taken question belongs
 **Pines: amnesia, and the reader as confused as the hero.** "He came to lying on his back with sunlight pouring down into his face and the murmur of running water close by." He has no wallet, no phone and no name. Crouch then gives a list: "He knew six things," including "That he could play the piano. And fly a helicopter." The town is too perfect: "All the colors so pure and vivid." A barista's "flicker of horror" turns out to be his own bruised face in the mirror.
 
 My reading of the pattern: each opening plants the book's central question in the first scene. Three of the four are quick to show the stakes in the hero's body or family. The theme is spoken aloud, usually in dialogue, within the first chapter.
+
+**Against his peers (pass three).** Crouch's mark is the one-sentence paragraph, not short sentences or easy words. Sentence length and reading grade are about the same across all eight openings.
+
+| Opening (first ~1,000 words) | Words per sentence | Words per paragraph | One-sentence paragraphs | Dialogue paragraphs | Reading grade |
+| --- | --- | --- | --- | --- | --- |
+| Crouch, *Dark Matter* | 9.0 | 17.5 | 52% | 55% | 3.9 |
+| Crouch, *Recursion* | 10.3 | 23.8 | 48% | 61% | 4.2 |
+| Crouch, *Upgrade* | 11.6 | 21.3 | 52% | 27% | 5.1 |
+| Crouch, *Pines* | 13.1 | 22.4 | 56% | 7% | 5.1 |
+| Crichton, *Jurassic Park* | 10.2 | 25.6 | 37% | 56% | 4.3 |
+| Weir, *Project Hail Mary* | 5.4 | 16.0 | 26% | 37% | 1.6 |
+| Weir, *The Martian* | 12.0 | 34.6 | 31% | 0% | 4.7 |
+| Haig, *The Midnight Library* | 12.3 | 21.3 | 37% | 0% | 4.8 |
+
+Measured by script on the publishers' excerpts. Reading grade is Flesch-Kincaid with an approximate syllable count. The one-sentence check was tested on known samples first. Openings only, eight books: a strong hint, not a census.
+
+What the openings share, and what is his:
+- *The Midnight Library* foretells like *Dark Matter* ("Nineteen years before she decided to die"). Foretelling is a genre move, not his alone.
+- *Project Hail Mary* opens on an amnesiac, as *Pines* does. Weir plays it for comedy; Crouch plays it for dread.
+- *Jurassic Park* also opens on a family, with short lines ("That, and everything else."). But they are bystanders, tourists who never return as leads. All four Crouch openings start on the protagonist, in close point of view.
+- Closest to his own: the hero's own family, in close point of view, with the coming loss foretold in the hero's voice and set alone on the page. Of these eight openings, only *Dark Matter* does all three.
 
 ### 2.7 Velocity prose, and the quieter register under it
 
@@ -333,6 +364,15 @@ Crouch on adapting his own work: "It's like getting a do-over... once you start 
 
 My reading: the season 1 consensus fits what the novels show. His books are built for compression, and stretching one into nine hours exposed how much of its power comes from speed.
 
+**Where he is now (checked November 4, 2026).**
+- **Season 2** ran August 28 to October 30, 2026, on an original story past the book ([Winter Is Coming](https://winteriscoming.net/dark-matter-season-2-penultimate-episode-teases-apple-tv-series-end-forever-next-week)).
+- **Season 3** is not announced. That critic expected the finale to close the series; a Reactor headline says Crouch "teases Season 3"†.
+- **Next novel:** "currently at work on a new book," no title or date ([blakecrouch.com](https://blakecrouch.com/), undated page). *Upgrade* (2022) is still his latest new novel.
+- ***Recursion* adaptation:** Netflix, Shondaland and Matt Reeves have held the rights since before the 2019 release. In his 2024 AMA he said "I wish I had updates."
+- ***Run*** (2011) was reissued in hardback in 2024 ([The Guardian](https://www.theguardian.com/books/2024/oct/01/crime-and-thrillers-of-the-month-review-guide-me-home-attica-locke-run-blake-crouch-jackal-erin-e-adams-hear-him-calling-carly-reagon)).
+- **Season 1 as a do-over:** it let him give pages to "What is it like for Daniela to be living with this imposter?" He also cut the one scene his science adviser said could never happen ([Reactor, May 2024](https://reactormag.com/dark-matter-blake-crouch-says-tv-series-gave-him-a-do-over-on-the-book/)).
+- **NYT "By the Book," August 2026:** "I Write the Way I Like to Read"; "Lots of white space on a page. Short paragraphs that move."†
+
 ## 4. How he works
 
 1. **Hunt for the idea.** "The hardest part of my books so far has just been finding the ideas... it's not something where you can just sit there and wait for the inspiration to hit. I'm actively looking, absorbing things around me all the time" (Goodreads 2019).
@@ -342,12 +382,51 @@ My reading: the season 1 consensus fits what the novels show. His books are buil
 5. **Outline to the midpoint, then start.** "Once I feel like I've got my arms around what might happen from page one to the midpoint, at that point I'll start writing. Then I'll cross my fingers and hope that by the time I reach the midpoint, I'll know what's happening at the end" (Goodreads 2022).
 6. **Draft steadily.** About 2,000 words a day once the idea is set. "When I know where the story is going, I write A LOT. When I don't know where it's going, I'm miserable." He writes anywhere with noise-cancelling headphones, and likes mornings, late nights and "a perfectly noisy coffee shop." "Sometimes you have to write even when you don't feel like it" (Goodreads Q&A; Goodreads 2019).
 7. **Rewrite until the characters and the ending are true.** Characters live by draft five or six; he discards 50,000 to 70,000 words when the landing is wrong.
-8. **Get outside eyes.** Scientists read the manuscript; for *Upgrade*, so did friends with different politics. His wife edits.
+8. **Get outside eyes.** Scientists read the manuscript; for *Upgrade*, so did friends with different politics. Jacque Ben-Zekry, whom he calls his partner in the AMAs, is his development editor and a writer-producer on the show (Reddit 2022, 2024).
 9. **Ship only when it's ready.** "I would NEVER publicly share my work until it was as perfect as I could possibly make it." He reads reviews only early, until he can tell people like the book (Goodreads Q&A). He says a book takes about "18 - 24 months" from inception to publication.
 
 **On doubt.** "No matter how much you have doubts/insecurities, you can't let it actually effect the work... you have to believe in the stories you have to tell and single-mindedly pursue getting them written down in the best version possible." And: "Sometimes that voice is right, sometimes it's wrong. It's a matter of knowing when to listen to it." On writing *Dark Matter*: "Mostly, we're just hoping we aren't destroying [our] careers. We're a super insecure bunch" (Goodreads Q&A).
 
 **Advice to writers.** "Write the book you want to read," and "Read everything you can get your hands on." Of his own sources of ideas: "imagining books I want to read that haven't been written yet" (Goodreads Q&A).
+
+### In his own words on Reddit (pass three)
+
+His Reddit answers are blunter and more technical than his Goodreads ones. Quotes are exact, from u/blakecrouch; the year names the AMA.
+
+**The order he works in (2022).** "To be clear, this list is not 'what is most important' it's the order I do things."
+1. **Idea:** "Queen of writing. Without a good concept/idea/thought what's the freaking point?"
+2. **Structure:** "I use the standard 4 Act structure. I am not beholden to every or even most 'beats' but I use them as guideposts." He checks himself: "I should be surprising myself soon…. Why am I not surprised yet!"
+3. **Plot:** his editor Julian told him "Just have a lot of things happen." "Too much can be cut back, but not enough is BORING."
+4. **Character:** "I start with plot and layer in my characters. I think most writers do the opposite."
+5. **World building:** not a focus "until draft two or three."
+6. **Theme:** "what I am subconsciously working on in my personal life… My job becomes to edit said vomited theme into the story."
+7. **Prose:** not much on his mind "until draft 3 or 4."
+
+**Pace and exposition.**
+- "You don't need to make sure everyone understands everything on page one. There are tons of nooks and crannies in any book where you can stash a bit of science, or backstory, or important exposition." (2022)
+- Science goes in three times: "First: simple. Second: super scienc-y. Third: metaphor." And in layers: "Every draft the science increases in some areas and decreases in others." (2022)
+- Action is hardest: "prone to being repetitive, and its easy for a sequence to get away from you." Dialogue is easiest. (2022)
+- On scope: "Most of my books/plots/stories are about editing back big things to a story, not showing every possibility." "I wanted there to be a villain, not a villainous concept." (2024)
+
+**Prose, and why it looks the way it does (2022).**
+- "I intentionally, and carefully, write my books to be at the fifth grade reading level," so adults who never learned to read well, dyslexia programs and prison libraries can use them. "Simple writing is harder. Ask any editor." His heroes: James M. Cain, Agatha Christie, Camus.
+- "My short paragraphs and clipped sentences are also a symptom of how I talk. Every night I record what I wrote the day before and listen to it."
+- "I hate paragraphs but I'm trying to be better and use them more often." Earlier (2017): "I think it's a faster, smoother reading experience to leave plenty of white space."
+- He under-describes faces on purpose: "just a few details allows the reader to bring their own imagination" (2020). The exception: "Barry and Helena in RECURSION. I know what they look like." (2024)
+
+**Drafting, numbers and people.**
+- Drafts: "Dark took 5 drafts, Recursion 6, Upgrade 7." *Recursion* took "nine" rounds of revision, with "about 20 readers" at stages (2019, 2022).
+- Daily output: 500 to 1,000 words (2017); later "1K words a day but no more than 3K" once past the 30% mark (2022). This differs from the "about 2,000 words a day" in step 6 above (Goodreads); the figure varies by year and stage.
+- Planning: "the first two acts (or about 50%)" before writing (2022); "the first 100ish pages" (2024). Step 5's "midpoint" holds for 2022.
+- Waste: "Typically about half the book is thrown out and rewritten." He once "threw away 150 pages" for want of a final act (2017, 2024).
+- On *Recursion*, Ben-Zekry was "constantly on me about the rules." He pays his science experts himself (2022).
+- Endings: "when I'm struggling with an ending it's because I don't properly understand my characters… Books are just character arcs." (2022)
+- Twists: "Most of my books don't have giant twists" (2015); his twists "are never planned, they just happen as i write," though he "hate[s] predictability" (2022).
+- Time travel: everyone, not only the traveller, remembers the dead timelines. That rule was his fix for paradox, and "it quickly became a feature" (r/Fantasy 2020).
+
+**How he sees himself.** "I am a horror writer who writes Sci-Fi" (2022). His books share "DNA with 70s/80s paranoid thrillers with a sci-fi overlay" (2024). "I'm a gateway drug… I'm not the pure heroin version of a sci-fi writer. I am the pure heroin version of me" (2020). Advice: "No one cares. So you have to make them care." (2017)
+
+**Where he concedes.** On women: "I will own that I have not always been the best at writing women. I look back at RUN and cringe." *Summer Frost* "was 100% a reaction to the sexist tropes of Sci-fi" (2022). On life and theme: "Dark Matter is kind of my journal of that time in my life"; by the end of writing it "I had realized I was not" happy, and he moved and divorced (2024).
 
 ## 5. What readers and critics say
 
@@ -357,6 +436,21 @@ My reading: the season 1 consensus fits what the novels show. His books are buil
 - **Minor characters** are the steady weakness (USA Today, The Verge, Publishers Weekly on *The Last Town*).
 - **The science** is called "convenient" (USA Today, Asimov's) or needing goodwill (Kirkus), but rarely boring.
 - **The emotional core** is praised more often than the prose is: "touching, and charming" (Guardian), "a poignant love story" (Kirkus on *Recursion*), "a surprisingly emotional ending" (Kirkus on *Upgrade*).
+
+**The critics in full (pass three).** Read whole, the reviews praise the payoff and forgive the prose. All but the mixed 2004 debut review are positive overall; the complaints sit inside the praise.
+
+| Critic | Book | The praise | The complaint |
+| --- | --- | --- | --- |
+| [Jason Sheehan, NPR (2016)](https://www.npr.org/2016/07/31/485865180/dark-matter-is-a-jet-propelled-science-thriller) | *Dark Matter* | "Crouch sticks the landing"; the twist is "dark, horrifying, funny as hell, bizarre, completely earned and utterly original." He rode an elevator "up and down for 20 minutes" to finish a chapter | "Maddening addiction to sentence fragments and single line paragraphs"; "doesn't make much sense"; "spongy physics" |
+| [Alison Flood, The Guardian (2016)](https://www.theguardian.com/books/2016/aug/22/dark-matter-blake-crouch-review-wayward-pines) | *Dark Matter* | "Proud and joyful in its absurdity"; Jason's love for his family is "given proper depth and history"; "his plot tight" | "Not, by any means, a sensible book"; the single-line habit is "not un-irritating"; "very much aimed at film adaptation" |
+| [Jason Sheehan, NPR (2019)](https://www.npr.org/2019/06/13/732035142/recursion-is-a-puzzle-box-of-time-travel-memory-and-death) | *Recursion* | "Juggles the multiple narrators and timelines with a confident economy"; characters "come off as actual humans rather than robots programmed to spout off dialogue" | "Some of his relationships come with a whiff of plot contrivance"; a villain "so destined for one dimensional villainy that his name is Slade" |
+| [Paul Di Filippo, Locus (2019)](https://locusmag.com/review/paul-di-filippo-reviews-recursion-by-blake-crouch/) | *Recursion* | Starts as a familiar technothriller, then goes "seductively off the rails"; characters evolve "through repeated 'test to destruction' moments"; "quintessential SF" | The opening fits a pigeonhole: "pared down and highly cinematic," "not much introspection" |
+| [Jason Sheehan, NPR (2022)](https://www.npr.org/2022/07/14/1111492677/upgrade-takes-a-unique-fun-path-to-the-end) | *Upgrade* | "A dependable storyteller"; "even his surprises seem like clockwork. They all go off precisely when he wants them to" | "Cul-de-sacs of jargon and gear-porn"; "the endpoint is a little bit obvious"; "Bloody, grim and occasionally pedantic, but still fun" |
+| [Gabino Iglesias, Locus (2022)](https://locusmag.com/review/gabino-iglesias-reviews-upgrade-by-blake-crouch/) | *Upgrade* | "Easy to devour and complex"; the science "meticulously researched" yet "easy to comprehend"; a thriller that becomes "all about empathy" | None stated |
+| [Publishers Weekly (2004)](https://www.publishersweekly.com/9780312286446) | *Desert Places* | "Smart, tight prose displays plenty of narrative energy"; "Crouch shows real talent" | "Folds under the weight of its ambitions"; gore and "portentousness" |
+| [Alison Flood, The Guardian (2024)](https://www.theguardian.com/books/2024/oct/01/crime-and-thrillers-of-the-month-review-guide-me-home-attica-locke-run-blake-crouch-jackal-erin-e-adams-hear-him-calling-carly-reagon) | *Run* (reissue) | "Once you accept that premise, Run is a lot of fun" | "Thrilling and ridiculous"; she quotes a run of fragments as the example |
+
+What the full texts add: the complaints are consistent across 18 years (fragments, film-ready staging, loose science), and so is the praise (the landing, the twist, characters who feel human). Sheehan's three reviews track the Goodreads ratings: raves for *Dark Matter* and *Recursion*, "still fun" for *Upgrade*. NYT reviews were not read (snippets only: *Upgrade* "sleek and propulsive… with unexpectedly beautiful passages"†).
 
 ### Readers (Goodreads)
 - **The compulsion.** The most-liked *Dark Matter* review (2,167 likes) calls it "the kind of compelling 'I must know WTF is going on' book that makes you forget about everything else you had to do that day."
@@ -368,8 +462,27 @@ My reading: the season 1 consensus fits what the novels show. His books are buil
   - The multiverse as a "cheap narrative device the author wildly abuses by the end" (one star, 711 likes).
   - For *Upgrade*, plot crowding out character.
 
-### Reddit
-Not read in this pass: Reddit returned a login wall to both automated attempts. The one Reddit opinion in this study is from v1, through a mirror site: in a July 2024 r/printSF thread, one commenter called *Dark Matter* "pretty generic" and another replied that *Recursion* and *Dark Matter* "are great"†.
+### Reddit (pass three)
+
+Reddit readers judge him the way critics do, only more sharply. Speed and the ending win; characters, women especially, and the prose lose. Upvotes are in brackets.
+
+**What wins.**
+- Speed: "I started this book at 7am and just finished it (1:10pm); I haven't done that since Deathly Hallows!" [6]. "I have trouble reading… I read Recursion twice in one week" [9].
+- A way back into reading: "Dark Matter was the first e-book I bought and after not reading for several years, I surprised myself by finishing it in 2 days" [31].
+- The *Dark Matter* turn: "That passage where he logs in to his chatroom… totally caught me off guard" [46].
+- *Recursion*'s scale: "it felt like it underwent a big 'status quo' change like a handful of times" [12].
+
+**What loses.**
+- Women and flat characters. The top reply in a 2025 thread, citing his AMA: "he basically said 'Yup, I'm bad at writing women'" [63]. Others: "the characters were *so* one-dimensional" [23]; "The women in it might as well have been cardboard cutouts" [10].
+- The prose: "Short sentences. Quick sentences. Cheesy sentences" [10]; "The writing left no room for subtlety" [15]; "a very good storyteller but not a great writer" [10].
+- Built for the screen: "They almost feel like a skeleton of a TV show/movie script" [8].
+- Science and logic, mostly on r/printSF: one post called *Recursion* "the stupidest and most insulting book I've ever read." The top replies pushed back: "a popcorn junk science thriller, like Crichton… I enjoyed it for what it was" [40].
+- *Recursion*'s last third: "great until the fifth 'book', then started to get tedious" (a post); "the final third kind of went on too long" [2].
+- *Upgrade* trails, as on Goodreads: "Recursion was great as well but Upgrade wasn't nearly as good" [22]; "incredibly disappointing, Dark Matter and Recursion were miles better" [7].
+
+**Who readers compare him to.** Crichton most of all ("Blake Crouch is the modern Michael Crichton" [14]), then Peter Clines, Tom Sweterlitsch's *The Gone World*, Marcus Sakey, Daniel Suarez and Patrick Lee. One reader preferred Ted Chiang's "Understand" to *Upgrade*. The reader who put *The Midnight Library* beside him (one thread) preferred *Dark Matter*.
+
+A rough keyword tally over all ~1,200 comments was too noisy to report ("movie" mostly caught talk of the adaptations). The patterns above come from reading the replies, not from counts. v1's one mirror-site Reddit opinion (r/printSF, July 2024†) is superseded.
 
 ## 6. Why his books are worth reading, through a craft lens
 
@@ -410,13 +523,32 @@ The trade is clear. He gives up sentence-level texture, supporting-cast depth an
 
 ## 8. Still open or unverified
 
-- **Reddit** was not read (login wall). A real Reddit pass would need either a Reddit account login for this session or a Reddit API app with its keys stored as environment secrets.
+- **Text past chapter one** is still unread. Endings and quiet middle scenes are judged through reviews, readers and Crouch's own words. This is now the largest gap.
+- **Reddit** was read in pass three through the Arctic Shift archive, with no API keys. Big-subreddit title searches timed out, so r/books 2022–23 and r/printSF outside 2019–21 are thin. The r/BlakeCrouch fan subreddit was not sampled.
+- **The New York Times** reviews and the August 2026 "By the Book" are paywalled and were not read (snippets marked †).
+- **Not read at all:** Tor.com/Reactor reviews, academic criticism, the audiobooks and the TV scripts. Sakey and Clines, whom readers name most after Crichton, were not measured.
+- **No editor's or collaborator's account.** The process still rests on Crouch's own words, now from Goodreads and Reddit.
 - **Google Books** was not read (robot check). The publisher excerpts cover the opening chapters instead.
 - **web.archive.org** still did not connect after being allowed; I did not dig into why.
 - **Search-only quotes.** Quotes marked † are from search summaries: Suspense Magazine, the "skim it back" science line and the r/printSF thread. Further claims in v1 from The Qwillery, The Portalist, Paul Semel, Chicago Review of Books, Time, Script Magazine, EW and Locus were not re-checked in this pass. Most of their points are now confirmed by Crouch's own Goodreads words; where they weren't, I left them out.
 - **Clifford Johnson's title** differs by source. Crouch has called him "the head of the physics department at USC" and "with the astrophysics department at USC."
-- **The Recursion adaptation's** current status was not checked.
+- **The Recursion adaptation** has had no public update since his 2024 AMA ("I wish I had updates"); nothing newer was found on November 4, 2026.
 - **Goodreads counts** are live and were read on November 3, 2026.
+
+## What changed in v3 (pass three)
+
+- **New:**
+  - Crouch's ranked working order and his Reddit craft rules (section 4).
+  - His stated reasons for the prose: the fifth-grade target and reading aloud.
+  - Peer openings measured against Crichton, Weir and Haig (end of 2.6).
+  - Full critic reviews (section 5) and Reddit reader voice.
+  - Where he is now, November 2026 (end of section 3).
+- **Named:** his development editor is Jacque Ben-Zekry (v2 said only "his wife edits"; he calls her his partner).
+- **Nuanced:**
+  - Daily word counts differ by year and stage (500 to 3,000).
+  - Planning before drafting is "about 50%" (2022) or "the first 100ish pages" (2024).
+  - He says his twists are unplanned and most books lack a giant one.
+- **Superseded:** the v1 mirror-site Reddit quote.
 
 ## What changed from v1
 
@@ -440,6 +572,14 @@ The trade is clear. He gives up sentence-level texture, supporting-cast depth an
   - Live rating data, and named critics from five outlets.
 
 ## Sources
+
+**Read directly in v3 (pass three, November 4, 2026).**
+- Crouch's AMAs (via the [Arctic Shift](https://arctic-shift.photon-reddit.com/) archive): [r/books 2015](https://www.reddit.com/r/books/comments/3aektu/) · [r/books 2017](https://www.reddit.com/r/books/comments/6khslt/) · [r/books 2019](https://www.reddit.com/r/books/comments/c5rbk4/) · [r/books 2020](https://www.reddit.com/r/books/comments/gab306/) · [r/Fantasy panel 2020](https://www.reddit.com/r/Fantasy/comments/ggfvsf/) · [r/books 2022](https://www.reddit.com/r/books/comments/wpd8wf/) · [r/television 2024](https://www.reddit.com/r/television/comments/1doeu8f/)
+- Reader threads quoted: [r/books 2025](https://www.reddit.com/r/books/comments/1ohfbp2/) · [r/books 2024](https://www.reddit.com/r/books/comments/1djpqgy/) · [r/books book club 2017](https://www.reddit.com/r/books/comments/6eibn1/) · [r/books 2018](https://www.reddit.com/r/books/comments/98kczz/) · [r/books 2018](https://www.reddit.com/r/books/comments/a51uko/) · [r/books 2020](https://www.reddit.com/r/books/comments/f67nct/) · [r/books book club 2020](https://www.reddit.com/r/books/comments/fsughk/) · [r/books 2019](https://www.reddit.com/r/books/comments/c38lf9/) · [r/books 2019](https://www.reddit.com/r/books/comments/ckfdot/) · [r/printSF 2020](https://www.reddit.com/r/printSF/comments/glxewh/) · [r/printSF 2021](https://www.reddit.com/r/printSF/comments/kx2the/) · [r/scifi 2024](https://www.reddit.com/r/scifi/comments/1hib60k/) · [r/scifi 2022](https://www.reddit.com/r/scifi/comments/w1leib/)
+- Critics: linked in the table under "The critics in full" (section 5).
+- Peer excerpts (Penguin Random House): [Jurassic Park](https://www.penguinrandomhouse.com/books/33501/jurassic-park-by-michael-crichton/) · [Project Hail Mary](https://www.penguinrandomhouse.com/books/611060/project-hail-mary-movie-tie-in-by-andy-weir/) · [The Martian](https://www.penguinrandomhouse.com/books/234102/the-martian-by-andy-weir/) · [The Midnight Library](https://www.penguinrandomhouse.com/books/575653/the-midnight-library-a-gma-book-club-pick-by-matt-haig/)
+- Currency: [blakecrouch.com](https://blakecrouch.com/) · [Winter Is Coming](https://winteriscoming.net/dark-matter-season-2-penultimate-episode-teases-apple-tv-series-end-forever-next-week) · [Reactor, May 2024](https://reactormag.com/dark-matter-blake-crouch-says-tv-series-gave-him-a-do-over-on-the-book/)
+- Search snippets only (†): [NYT By the Book, Aug 2026](https://www.nytimes.com/2026/08/20/books/review/blake-crouch-dark-matter.html) · [NYT on Upgrade, 2022](https://www.nytimes.com/2022/08/01/books/review/blake-crouch-new-science-fiction.html) · [Reactor homepage](https://reactormag.com/)
 
 **Read directly in v2.**
 - Wikipedia: [Blake Crouch](https://en.wikipedia.org/wiki/Blake_Crouch) · [Dark Matter (novel)](https://en.wikipedia.org/wiki/Dark_Matter_(Crouch_novel)) · [Recursion](https://en.wikipedia.org/wiki/Recursion_(Crouch_novel)) · [Upgrade](https://en.wikipedia.org/wiki/Upgrade_(novel)) · [The Wayward Pines Trilogy](https://en.wikipedia.org/wiki/The_Wayward_Pines_Trilogy) · [Dark Matter (2024 TV series)](https://en.wikipedia.org/wiki/Dark_Matter_(2024_TV_series))
